@@ -16,7 +16,20 @@
     .navbar {
       background-color: #007bff;
     }
-    .navbar-brand, .nav-link {
+    .navbar-brand {
+      color: #fff !important;
+      display: flex;
+      align-items: center;
+    }
+    .navbar-brand img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+      border: 2px solid #ffffff;
+      object-fit: cover;
+    }
+    .nav-link {
       color: #fff !important;
     }
 
@@ -75,18 +88,20 @@
 </head>
 <body>
 
-  <!-- Navbar -->
+  <!-- Navbar with Profile Picture -->
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-      <a class="navbar-brand" href="#">Professor Portfolio</a>
+      <a class="navbar-brand" href="#">
+        <img src="https://via.placeholder.com/150" alt="Profile Picture"> Professor Portfolio
+      </a>
     </div>
   </nav>
 
   <!-- Hero Section -->
   <section class="hero">
     <div class="container">
-      <!-- Profile Picture -->
-      <img src="Jagan.jpeg/150" alt="Profile Picture" class="profile-picture">
+      <!-- Profile Picture in Hero Section -->
+      <img src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-picture">
       <h1>Welcome to My Professional Portfolio</h1>
       <p>I am an Assistant Professor at M.Kumarasamy College of Engineering, with expertise in teaching, research, and academic projects.</p>
       <a href="#portfolio" class="btn btn-primary">Explore My Work</a>
