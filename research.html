@@ -4,217 +4,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research Interests and Projects</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Research Interests & Projects</title>
+    <!-- Use Tailwind CSS for modern, utility-first styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="description" content="Research interests, publications, and projects focused on technology, sustainability, and innovation.">
+    <link rel="icon" href="favicon.ico">
     <style>
-        /* body {
-            background-color: #f4f4f9;
-            
-        } */
-
-          body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            line-height: 1.6;
-            background-color: #f9f9f9;
+        body {
+            font-family: 'Inter', 'Segoe UI', 'Arial', sans-serif;
         }
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-        ul {
-            list-style-type: square;
-            margin: 0;
-            padding: 0;
-        }
-        li {
-            margin-bottom: 15px;
-        }
-        .title {
-            font-weight: bold;
-            color: #0056b3;
-        }
-         .details {
-            font-style: italic;
-            color: #555;
-        }
-        .content-section {
-            background-color: #ffffff;
-            /* White background for section */
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            /* Subtle shadow for better definition */
-        }
-
-        .card {
-            border: none;
-            background-color: #f9fafb;
-            /* Light background color for each card */
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            /* Subtle shadow */
-        }
-
-        .card-title {
-            color: #007bff;
-            /* Primary color for titles */
-            font-weight: 600;
-        }
-
-        .card-text,
-        .lead {
-            color: #5a5a5a;
-            /* Neutral color for readability */
+        .card-hover:hover {
+            box-shadow: 0 8px 32px rgba(31, 41, 55, 0.2);
+            transform: translateY(-3px) scale(1.02);
+            transition: box-shadow 0.2s, transform 0.2s;
         }
     </style>
 </head>
 
-<body>
+<body class="bg-gradient-to-br from-gray-50 to-blue-50 min-h-screen text-gray-900">
 
-    <section class="container my-5 content-section">
-        <div class="text-center">
-            <h1 class="mb-4">Research Interests and Projects</h1>
-            <p>Dedicated to advancing innovative solutions and impactful projects across environmental
-                restoration, cutting-edge
-                technology, and student-led entrepreneurship initiatives. My research emphasizes sustainable practices
-                and empowers the
-                next generation of tech-driven innovators.</p>
-        </div>
+    <main class="max-w-4xl mx-auto px-4 py-8">
+        <!-- Header Section -->
+        <section class="text-center mb-10">
+            <h1 class="text-4xl font-extrabold text-blue-800 mb-2 tracking-tight">Research Interests &amp; Projects</h1>
+            <p class="text-lg text-gray-600 mt-1 max-w-2xl mx-auto">
+                Advancing innovative solutions and impactful projects across environmental restoration, technology, and entrepreneurship. Research emphasizes sustainable practices and empowers the next generation of tech-driven innovators.
+            </p>
+        </section>
 
-        <div class="row my-5">
-            <!-- Marine Ecosystem Restoration and Pollution Project -->
-            
-
-
-            <h1>Research Publications</h1>
-            <ul>
-                <li>
-                    <span class="title">Performance evaluation of MANET routing protocol under black hole attack using OPNET
-                        simulator</span><br>
-                    <span class="details">M. Jaganath, R. Vikram, IJITEE 8 (7), 398-402, 2019. Cited by: 7</span>
+        <!-- Publications Section -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold text-blue-700 mb-4">Research Publications</h2>
+            <ul class="space-y-5">
+                <li class="bg-white rounded-lg p-5 shadow-sm border-l-4 border-blue-400">
+                    <span class="block text-base font-bold text-blue-700">Performance evaluation of MANET routing protocol under black hole attack using OPNET simulator</span>
+                    <span class="block text-sm text-gray-500 mt-1">M. Jaganath, R. Vikram, IJITEE 8 (7), 398-402, 2019. Cited by: 7</span>
                 </li>
-                <li>
-                    <span class="title">EDUSYNC – Smart Classroom Management System</span><br>
-                    <span class="details">M.Jaganath, Nandhana, Dharshini, Monesha, International Research Journal on Advanced
-                        Engineering Hub 2 (12), 2703-2706, 2024</span>
+                <li class="bg-white rounded-lg p-5 shadow-sm border-l-4 border-blue-400">
+                    <span class="block text-base font-bold text-blue-700">EDUSYNC – Smart Classroom Management System</span>
+                    <span class="block text-sm text-gray-500 mt-1">M.Jaganath, Nandhana, Dharshini, Monesha, International Research Journal on Advanced Engineering Hub 2 (12), 2703-2706, 2024</span>
                 </li>
-                <li>
-                    <span class="title">A Comprehensive Study About Various MANET Routing Protocols</span><br>
-                    <span class="details">M. Jaganath, Mr. R. Vikram, Intelligent Computing Research Studies in Life Science,
-                        113-118, 2019</span>
+                <li class="bg-white rounded-lg p-5 shadow-sm border-l-4 border-blue-400">
+                    <span class="block text-base font-bold text-blue-700">A Comprehensive Study About Various MANET Routing Protocols</span>
+                    <span class="block text-sm text-gray-500 mt-1">M. Jaganath, Mr. R. Vikram, Intelligent Computing Research Studies in Life Science, 113-118, 2019</span>
                 </li>
-                <li>
-                    <span class="title">An Exhaustive Consideration Of Wired and Wireless Network Simulators</span><br>
-                    <span class="details">AECOWWN Simulators, International Journal of Recent Technology and Engineering (IJRTE) 8
-                        (2S4), 2019</span>
+                <li class="bg-white rounded-lg p-5 shadow-sm border-l-4 border-blue-400">
+                    <span class="block text-base font-bold text-blue-700">An Exhaustive Consideration Of Wired and Wireless Network Simulators</span>
+                    <span class="block text-sm text-gray-500 mt-1">AECOWWN Simulators, International Journal of Recent Technology and Engineering (IJRTE) 8 (2S4), 2019</span>
                 </li>
             </ul>
+        </section>
 
-            <div class="col-md-6 mb-4">
-                <div class="card h-100">
-                    <img src="path/to/mern-stack-image.jpg" class="card-img-top" alt="MERN Stack Application Maintenance"
-                        style="border-radius: 8px 8px 0 0;">
-                    <div class="card-body">
-                        <h3 class="card-title text-center">MERN Stack Application Maintenance</h3>
-                        <p class="card-text">A project focused on the maintenance, optimization, and scaling of MERN stack
-                            applications to ensure robust performance and reliability.</p>
-                        <h5>Methodology:</h5>
-                        <ul>
-                            <li><strong>M:</strong> MongoDB management for optimized data storage and efficient querying.</li>
-                            <li><strong>E:</strong> Express.js configuration for backend efficiency and API stability.</li>
-                            <li><strong>R:</strong> React component optimization to enhance frontend responsiveness and usability.
-                            </li>
-                            <li><strong>N:</strong> Node.js maintenance for server-side stability and improved load management.</li>
-                        </ul>
-                        <h5>Outcomes:</h5>
-                        <p>Increased application performance, enhanced scalability, reduced downtime, and improved end-user
-                            experience.</p>
-                    </div>
+        <!-- Projects Section -->
+        <section>
+            <h2 class="text-2xl font-semibold text-blue-700 mb-4">Highlighted Projects</h2>
+            <div class="grid gap-8 md:grid-cols-2">
+
+                <!-- MERN Stack Application Maintenance -->
+                <div class="card-hover bg-white rounded-xl shadow-md p-6 flex flex-col">
+                    <h3 class="text-xl font-bold text-blue-600 mb-2 text-center">MERN Stack Application Maintenance</h3>
+                    <p class="text-gray-500 mb-3 text-center">Maintenance, optimization, and scaling of MERN stack applications for robust performance and reliability.</p>
+                    <h4 class="font-semibold text-blue-700 mb-1">Methodology:</h4>
+                    <ul class="list-disc ml-4 text-gray-600 mb-2 space-y-1">
+                        <li><strong>M:</strong> MongoDB management for optimized data storage and querying.</li>
+                        <li><strong>E:</strong> Express.js for backend efficiency and stable APIs.</li>
+                        <li><strong>R:</strong> React component optimization for responsive UIs.</li>
+                        <li><strong>N:</strong> Node.js maintenance for server-side stability.</li>
+                    </ul>
+                    <h4 class="font-semibold text-blue-700 mb-1">Outcomes:</h4>
+                    <p class="text-gray-600">Increased performance, scalability, reduced downtime, and improved user experience.</p>
+                </div>
+
+                <!-- LAMP Stack Development -->
+                <div class="card-hover bg-white rounded-xl shadow-md p-6 flex flex-col">
+                    <h3 class="text-xl font-bold text-blue-600 mb-2 text-center">LAMP Stack Development</h3>
+                    <p class="text-gray-500 mb-3 text-center">Building, optimizing, and maintaining LAMP stack applications for stability, scalability, and efficient data management.</p>
+                    <h4 class="font-semibold text-blue-700 mb-1">Methodology:</h4>
+                    <ul class="list-disc ml-4 text-gray-600 mb-2 space-y-1">
+                        <li><strong>L:</strong> Linux server configuration and security.</li>
+                        <li><strong>A:</strong> Apache setup for efficient requests and balancing.</li>
+                        <li><strong>M:</strong> MySQL database design and tuning.</li>
+                        <li><strong>P:</strong> PHP for dynamic, user-friendly applications.</li>
+                    </ul>
+                    <h4 class="font-semibold text-blue-700 mb-1">Outcomes:</h4>
+                    <p class="text-gray-600">Enhanced performance, secure data, reliable server operation, and scalable apps.</p>
+                </div>
+
+                <!-- MSME Idea Hackathon 4.0 -->
+                <div class="card-hover bg-white rounded-xl shadow-md p-6 flex flex-col">
+                    <h3 class="text-xl font-bold text-blue-600 mb-2 text-center">MSME Idea Hackathon 4.0</h3>
+                    <p class="text-gray-500 mb-3 text-center">Review and mentorship for student innovators in AR/VR, IoT, sensors, and water management.</p>
+                    <h4 class="font-semibold text-blue-700 mb-1">Methodology:</h4>
+                    <ul class="list-disc ml-4 text-gray-600 mb-2 space-y-1">
+                        <li><strong>Assessment:</strong> Evaluated proposals for innovation and impact.</li>
+                        <li><strong>Mentorship:</strong> Technical guidance and strategic planning.</li>
+                        <li><strong>Feedback:</strong> Iterative improvements through feedback loops.</li>
+                    </ul>
+                    <h4 class="font-semibold text-blue-700 mb-1">Outcomes:</h4>
+                    <p class="text-gray-600">Empowered students, promoted sustainability, and enhanced real-world tech exposure.</p>
+                </div>
+
+                <!-- Marine Ecosystem Restoration and Pollution (MERP) -->
+                <div class="card-hover bg-white rounded-xl shadow-md p-6 flex flex-col">
+                    <h3 class="text-xl font-bold text-blue-600 mb-2 text-center">Marine Ecosystem Restoration and Pollution (MERP)</h3>
+                    <p class="text-gray-500 mb-3 text-center">Restoring marine ecosystems and reducing pollution via machine learning, restoration techniques, data analysis, and community engagement.</p>
+                    <h4 class="font-semibold text-blue-700 mb-1">Methodology:</h4>
+                    <ul class="list-disc ml-4 text-gray-600 mb-2 space-y-1">
+                        <li><strong>M:</strong> Machine learning for ecosystem health insights.</li>
+                        <li><strong>E:</strong> Restoration techniques tailored to marine environments.</li>
+                        <li><strong>R:</strong> Data analysis to measure project impacts.</li>
+                        <li><strong>N:</strong> Community engagement for sustainable practices.</li>
+                    </ul>
+                    <h4 class="font-semibold text-blue-700 mb-1">Outcomes:</h4>
+                    <p class="text-gray-600">Improved biodiversity, water quality, and community involvement.</p>
                 </div>
             </div>
+        </section>
+    </main>
 
-            <div class="col-md-6 mb-4">
-                <div class="card h-100">
-                    <img src="path/to/lamp-stack-image.jpg" class="card-img-top" alt="LAMP Stack Development"
-                        style="border-radius: 8px 8px 0 0;">
-                    <div class="card-body">
-                        <h3 class="card-title text-center">LAMP Stack Development</h3>
-                        <p class="card-text">A project focused on building, optimizing, and maintaining applications using the LAMP
-                            stack, ensuring stability, scalability, and efficient data management.</p>
-                        <h5>Methodology:</h5>
-                        <ul>
-                            <li><strong>L:</strong> Linux server configuration and maintenance for security and performance.</li>
-                            <li><strong>A:</strong> Apache server setup and optimization for efficient request handling and load
-                                balancing.</li>
-                            <li><strong>M:</strong> MySQL database design and tuning for reliable data storage and fast query
-                                execution.</li>
-                            <li><strong>P:</strong> PHP development for dynamic, user-friendly web applications.</li>
-                        </ul>
-                        <h5>Outcomes:</h5>
-                        <p>Enhanced application performance, secure data transactions, reliable server operation, and improved
-                            scalability for high-traffic environments.</p>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- MSME Idea Hackathon Project -->
-            <div class="col-md-6 mb-4">
-                <div class="card h-100">
-                    <img src="path/to/msme-hackathon-image.jpg" class="card-img-top" alt="MSME Idea Hackathon"
-                        style="border-radius: 8px 8px 0 0;">
-                    <div class="card-body">
-                        <h3 class="card-title text-center">MSME Idea Hackathon 4.0</h3>
-                        <p class="card-text">Conducted a comprehensive review for the MSME Idea Hackathon, supporting
-                            student innovators in fields like AR/VR, IoT, electronic sensors, and water management
-                            systems.</p>
-                        <h5>Methodology:</h5>
-                        <ul>
-                            <li><strong>Project Assessment:</strong> Evaluated project proposals based on innovation,
-                                feasibility, and impact.</li>
-                            <li><strong>Mentorship:</strong> Provided guidance on technical execution and strategic
-                                planning.</li>
-                            <li><strong>Feedback Loops:</strong> Facilitated iterative improvements based on feedback.
-                            </li>
-                        </ul>
-                        <h5>Outcomes:</h5>
-                        <p>Empowered student innovators, promoted sustainable technologies, and enhanced student
-                            exposure to real-world challenges in emerging tech.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 mb-4">
-                <div class="card h-100">
-                    <img src="path/to/marine-ecosystem-image.jpg" class="card-img-top"
-                        alt="Marine Ecosystem Restoration and Pollution" style="border-radius: 8px 8px 0 0;">
-                    <div class="card-body">
-                        <h3 class="card-title text-center">Marine Ecosystem Restoration and Pollution (MERP)</h3>
-                        <p class="card-text">A project focused on restoring marine ecosystems and reducing pollution
-                            through the MERN methodology—Machine learning, Ecosystem restoration techniques, Data
-                            analysis, and Community engagement.</p>
-                        <h5>Methodology:</h5>
-                        <ul>
-                            <li><strong>M:</strong> Machine learning for data-driven insights on ecosystem health.</li>
-                            <li><strong>E:</strong> Ecosystem restoration techniques tailored to marine environments.
-                            </li>
-                            <li><strong>R:</strong> Robust data analysis to monitor and measure project impacts.</li>
-                            <li><strong>N:</strong> Community engagement to ensure sustainable practices.</li>
-                        </ul>
-                        <h5>Outcomes:</h5>
-                        <p>Enhanced marine biodiversity, improved water quality, and increased community involvement in
-                            ecosystem preservation.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+    <!-- Footer -->
+    <footer class="mt-12 text-center text-gray-400 text-sm pb-6">
+        &copy; 2025 M. Jaganath &mdash; All rights reserved.
+    </footer>
 </body>
 
 </html>
