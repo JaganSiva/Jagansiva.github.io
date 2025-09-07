@@ -1,153 +1,287 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Assistant Professor - Profile</title>
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
-</style>
+  <meta charset="UTF-8">
+  <title>Assistant Professor - Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f7f8fc;
+      color: #23253a;
+      min-height: 100vh;
+    }
+    .profile-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(34, 51, 84, 0.07);
+      margin-bottom: 2rem;
+      padding: 2rem;
+      text-align: center;
+    }
+    .profile-name {
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin-bottom: .25rem;
+      color: #2a4f8d;
+    }
+    .profile-title {
+      color: #4ba7fa;
+      margin-bottom: .5rem;
+      font-weight: 600;
+    }
+    .profile-contact i {
+      color: #4ba7fa;
+      margin-right: 8px;
+    }
+    .profile-contact span {
+      margin-right: 1.2rem;
+      font-size: .98rem;
+    }
+    .skills-list .progress {
+      height: 0.8rem;
+      border-radius: 6px;
+      background: #e3e7ef;
+      margin-bottom: 1rem;
+    }
+    .skills-list .progress-bar {
+      background-color: #4ba7fa;
+    }
+    .lang-list .progress {
+      height: 0.8rem;
+      border-radius: 6px;
+      background: #e3e7ef;
+    }
+    .lang-list .progress-bar {
+      background-color: #2a4f8d;
+    }
+    /* Timeline */
+    .timeline {
+      position: relative;
+      margin-left: 2rem;
+      padding-left: 2rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 0;
+      width: 3px;
+      height: 100%;
+      background: #4ba7fa;
+      border-radius: 2px;
+      z-index: 0;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(34,51,84,.09);
+      padding: 1.5rem 2rem 1.2rem 2.5rem;
+      z-index: 1;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -37px;
+      top: 28px;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border: 4px solid #4ba7fa;
+      border-radius: 50%;
+      z-index: 2;
+    }
+    @media (max-width: 768px) {
+      .timeline {
+        margin-left: 0;
+        padding-left: 0;
+      }
+      .timeline-item {
+        padding-left: 1.5rem;
+      }
+      .timeline-item::before {
+        left: -27px;
+      }
+    }
+    .timeline-job {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #2a4f8d;
+      margin-bottom: 0.2rem;
+    }
+    .timeline-org {
+      font-size: 1rem;
+      color: #4ba7fa;
+      margin-bottom: 0.6rem;
+    }
+    .timeline-dates {
+      font-size: 0.95rem;
+      color: #757b8a;
+      margin-bottom: 0.7rem;
+      font-style: italic;
+    }
+    .timeline-desc {
+      font-size: 1rem;
+      color: #23253a;
+    }
+    .section-title {
+      font-weight: 700;
+      font-size: 1.35rem;
+      color: #2a4f8d;
+      margin-top: 2rem;
+      margin-bottom: 1.2rem;
+    }
+    .edu-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(34,51,84,.09);
+      padding: 1rem 1.5rem;
+      margin-bottom: 1.2rem;
+    }
+    .edu-degree {
+      font-weight: 600;
+      color: #2a4f8d;
+      margin-bottom: .2rem;
+    }
+    .edu-school {
+      color: #4ba7fa;
+      font-size: 1rem;
+      margin-bottom: .3rem;
+    }
+    .edu-dates {
+      font-size: 0.93rem;
+      color: #757b8a;
+      margin-bottom: .4rem;
+      font-style: italic;
+    }
+    .edu-desc {
+      font-size: 0.98rem;
+      color: #23253a;
+    }
+    .fa-fw {
+      width:1.25em;
+    }
+  </style>
 </head>
-<body class="w3-light-grey">
-
-<!-- Page Container -->
-<div class="w3-content w3-margin-top" style="max-width:1400px;">
-
-  <!-- The Grid -->
-  <div class="w3-row-padding">
-  
-    <!-- Left Column -->
-    <div class="w3-third">
-    
-      <div class="w3-white w3-text-grey w3-card-4">
-        <div class="w3-display-container">
-          <img src="Jagan.jpeg" style="width:100%" alt="Avatar">
-          <div class="w3-display-bottomleft w3-container w3-text-black">
-            <h2>Jaganath M</h2>
+<body>
+  <div class="container py-4">
+    <div class="row justify-content-center">
+      <div class="col-lg-4 col-md-6">
+        <!-- Profile Card -->
+        <div class="profile-card">
+          <!-- Photo removed as per Option 2 -->
+          <div class="profile-name">Jaganath M</div>
+          <div class="profile-title"><i class="fa fa-briefcase fa-fw"></i> Assistant Professor</div>
+          <div class="profile-contact mb-3">
+            <span><i class="fa fa-location-dot fa-fw"></i>Karur, Tamilnadu</span>
+            <span><i class="fa fa-envelope fa-fw"></i>ex@mail.com</span>
+            <span><i class="fa fa-phone fa-fw"></i>1224435534</span>
           </div>
-        </div>
-        <div class="w3-container">
-          <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Assistant Professor</p>
-          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>Karur, Tamilnadu</p>
-          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>ex@mail.com</p>
-          <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>1224435534</p>
           <hr>
-
-          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b></p>
-          <p>LAMP & MERN Stack Development</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:99%">90%</div>
-          </div>
-          <p>Programming Languages - C,C++,Java</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:80%">
-              <div class="w3-center w3-text-white">80%</div>
+          <div class="section-title"><i class="fa fa-asterisk fa-fw"></i> Skills</div>
+          <div class="skills-list mb-2">
+            <div class="mb-1">LAMP & MERN Stack Development</div>
+            <div class="progress">
+              <div class="progress-bar" style="width:90%">90%</div>
+            </div>
+            <div class="mb-1">Programming Languages - C, C++, Java</div>
+            <div class="progress">
+              <div class="progress-bar" style="width:80%">80%</div>
+            </div>
+            <div class="mb-1">Illustrator</div>
+            <div class="progress">
+              <div class="progress-bar" style="width:75%">75%</div>
+            </div>
+            <div class="mb-1">Media</div>
+            <div class="progress">
+              <div class="progress-bar" style="width:50%">50%</div>
             </div>
           </div>
-          <p>Illustrator</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:75%">75%</div>
+          <div class="section-title"><i class="fa fa-globe fa-fw"></i> Languages</div>
+          <div class="lang-list mb-2">
+            <div class="mb-1">English</div>
+            <div class="progress mb-1">
+              <div class="progress-bar" style="width:100%"></div>
+            </div>
+            <div class="mb-1">Tamil</div>
+            <div class="progress">
+              <div class="progress-bar" style="width:100%"></div>
+            </div>
           </div>
-          <p>Media</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">50%</div>
-          </div>
-          <br>
-
-          <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Languages</b></p>
-          <p>English</p>
-          <div class="w3-light-grey w3-round-xlarge">
-            <div class="w3-round-xlarge w3-teal" style="height:24px;width:100%"></div>
-          </div>
-          <p>Tamil</p>
-          <div class="w3-light-grey w3-round-xlarge">
-            <div class="w3-round-xlarge w3-teal" style="height:24px;width:100%"></div>
-          </div>
-          <!-- <p>German</p>
-          <div class="w3-light-grey w3-round-xlarge">
-            <div class="w3-round-xlarge w3-teal" style="height:24px;width:25%"></div>
-          </div> -->
-          <br>
-        </div>
-      </div><br>
-
-    <!-- End Left Column -->
-    </div>
-
-    <!-- Right Column -->
-    <div class="w3-twothird">
-    
-      <div class="w3-container w3-card w3-white w3-margin-bottom">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Work Experience</h2>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Assistant Professor / AI&DS , M. Kumarasamy College of Engineering</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Oct 2021 - <span class="w3-tag w3-teal w3-round">Current</span></h6>
-          <p>I am currently working as an Assistant Professor at M. Kumarasamy College of Engineering. 
-            My role involves teaching core subjects in engineering, mentoring students, 
-            guiding research projects, and contributing to the academic and professional development of the department.</p>
-          <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Project Associate / SRM IST</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>May 2019 - Oct 2021</h6>
-          <p>As a Project Associate at SRM University, you contributed to software development initiatives and guided students in mastering programming languages 
-            like C, C++, Java, Python, and Data Structures, fostering their technical and problem-solving skills.</p>
-          <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Project Associate / IIT Madras</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Feb 2013 - July 2016</h6>
-          <p>With three years of experience as a Project Associate at IIT Madras, 
-            you contributed to cutting-edge research and development projects, collaborating with academic and industry experts, 
-            while also mentoring students and assisting in innovative solutions across various domains.</p><br>
         </div>
       </div>
-
-      <div class="w3-container w3-card w3-white">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Education</h2>
-         <div class="w3-container">
-          <h5 class="w3-opacity"><b>Anna University - PhD</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Forever</h6>
-          <p>Since 2022, I have been pursuing a PhD at Anna University, specializing in the domain of wireless sensor networks. 
-            My research focuses on developing innovative solutions for network protocols, 
-            enhancing communication efficiency, and addressing challenges in underwater and terrestrial sensor network environments.</p>
-          <hr>
-        </div> 
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>M. Kumarasamy College of Engineering - PG</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2017 - 2019</h6>
-          <p>Master Degree</p>
-          <hr>
+      <div class="col-lg-8 col-md-12">
+        <!-- Experience Timeline -->
+        <div class="section-title"><i class="fa fa-suitcase fa-fw"></i> Work Experience</div>
+        <div class="timeline">
+          <!-- Experience 1 -->
+          <div class="timeline-item">
+            <div class="timeline-job">Assistant Professor</div>
+            <div class="timeline-org">AI&DS, M. Kumarasamy College of Engineering</div>
+            <div class="timeline-dates">Oct 2021 - <span class="badge bg-primary">Current</span></div>
+            <div class="timeline-desc">
+              Currently working as an Assistant Professor, teaching core engineering subjects, mentoring students, guiding research projects, and contributing to academic and professional development.
+            </div>
+          </div>
+          <!-- Experience 2 -->
+          <div class="timeline-item">
+            <div class="timeline-job">Project Associate</div>
+            <div class="timeline-org">SRM IST</div>
+            <div class="timeline-dates">May 2019 - Oct 2021</div>
+            <div class="timeline-desc">
+              Contributed to software development initiatives and guided students in mastering programming languages such as C, C++, Java, Python, and Data Structures, fostering technical and problem-solving skills.
+            </div>
+          </div>
+          <!-- Experience 3 -->
+          <div class="timeline-item">
+            <div class="timeline-job">Project Associate</div>
+            <div class="timeline-org">IIT Madras</div>
+            <div class="timeline-dates">Feb 2013 - July 2016</div>
+            <div class="timeline-desc">
+              Participated in cutting-edge research and development projects, collaborated with academic and industry experts, mentored students, and assisted in delivering innovative solutions across various domains.
+            </div>
+          </div>
         </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Kurinji College Of Engineering -UG </b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2007 - 2011</h6>
-          <p>Bachelor Degree</p><br>
+        <!-- Education Section -->
+        <div class="section-title"><i class="fa fa-certificate fa-fw"></i> Education</div>
+        <div class="edu-card">
+          <div class="edu-degree">PhD</div>
+          <div class="edu-school">Anna University</div>
+          <div class="edu-dates">Since 2022</div>
+          <div class="edu-desc">
+            Pursuing PhD specializing in wireless sensor networks, focusing on innovative solutions for network protocols, communication efficiency, and challenges in underwater and terrestrial sensor network environments.
+          </div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-degree">Master Degree (PG)</div>
+          <div class="edu-school">M. Kumarasamy College of Engineering</div>
+          <div class="edu-dates">2017 - 2019</div>
+          <div class="edu-desc">
+            Completed postgraduate studies with a focus on advanced engineering concepts and research.
+          </div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-degree">Bachelor Degree (UG)</div>
+          <div class="edu-school">Kurinji College Of Engineering</div>
+          <div class="edu-dates">2007 - 2011</div>
+          <div class="edu-desc">
+            Graduated with a Bachelor's degree in Engineering.
+          </div>
         </div>
       </div>
-
-    <!-- End Right Column -->
     </div>
-    
-  <!-- End Grid -->
   </div>
-  
-  <!-- End Page Container -->
-</div>
-
-<!-- <footer class="w3-container w3-teal w3-center w3-margin-top">
-  <p>Find me on social media.</p>
-  <i class="fa fa-facebook-official w3-hover-opacity"></i>
-  <i class="fa fa-instagram w3-hover-opacity"></i>
-  <i class="fa fa-snapchat w3-hover-opacity"></i>
-  <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-  <i class="fa fa-twitter w3-hover-opacity"></i>
-  <i class="fa fa-linkedin w3-hover-opacity"></i>
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-</footer> -->
-
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
