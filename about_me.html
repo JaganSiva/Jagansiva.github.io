@@ -1,361 +1,668 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - Assistant Professor</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <title>About Me - Jaganath M</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --background-color: #ecf0f1;
-            --text-color: #2c3e50;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            background: linear-gradient(135deg, var(--background-color), #fff);
-            color: var(--text-color);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            position: relative;
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #fff;
             overflow-x: hidden;
         }
 
-        /* Animated background shapes */
-        .bg-shapes {
+        /* Navigation - Same as home page */
+        nav {
             position: fixed;
             top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.5;
+            z-index: 1000;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .shape {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(50px);
-            animation: float 15s infinite ease-in-out;
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .shape-1 {
-            width: 300px;
-            height: 300px;
-            background: rgba(52, 152, 219, 0.2);
-            top: 20%;
-            left: -150px;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .shape-2 {
-            width: 200px;
-            height: 200px;
-            background: rgba(231, 76, 60, 0.2);
-            bottom: 20%;
-            right: -100px;
-            animation-delay: -7s;
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
         }
 
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0) rotate(0deg);
-            }
-
-            50% {
-                transform: translateY(-20px) rotate(10deg);
-            }
-        }
-
-        .content-section {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            transform: translateY(20px);
-            opacity: 0;
-            animation: slideUp 0.6s ease forwards;
-        }
-
-        @keyframes slideUp {
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        h1,
-        h2 {
-            color: var(--primary-color);
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
             position: relative;
-            padding-bottom: 10px;
+            transition: color 0.3s ease;
         }
 
-        h1::after,
-        h2::after {
+        .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: 0;
+            bottom: -5px;
             left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--secondary-color);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             transition: width 0.3s ease;
         }
 
-        h1:hover::after,
-        h2:hover::after {
-            width: 100px;
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #667eea;
         }
 
-        .expertise-item {
-            background: white;
-            border-radius: 10px;
-            padding: 1rem;
-            margin: 1rem 0;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
         }
 
-        .expertise-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn {
-            border-radius: 25px;
-            padding: 0.5rem 1.5rem;
-            transition: all 0.3s ease;
-            margin: 0.5rem;
-        }
-
-        .btn-primary {
-            background: var(--secondary-color);
-            border: none;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-color);
-            transform: translateY(-2px);
-        }
-
-        .social-links {
-            margin-top: 2rem;
-        }
-
-        .social-links a {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
+        /* Page Header */
+        .page-header {
+            padding: 10rem 0 6rem;
             text-align: center;
-            border-radius: 50%;
-            background: var(--secondary-color);
-            color: white;
-            margin: 0 0.5rem;
-            transition: transform 0.3s ease;
-        }
-
-        .social-links a:hover {
-            transform: rotate(360deg);
-        }
-
-        /* Animated progress bars for skills */
-        .skill-bar {
-            height: 10px;
-            background: #e9ecef;
-            border-radius: 5px;
-            margin: 1rem 0;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
             position: relative;
             overflow: hidden;
         }
 
-        .skill-progress {
+        .page-header::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, #667eea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        /* Main Content */
+        .content-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 6rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section:nth-child(2) { animation-delay: 0.1s; }
+        .section:nth-child(3) { animation-delay: 0.2s; }
+        .section:nth-child(4) { animation-delay: 0.3s; }
+        .section:nth-child(5) { animation-delay: 0.4s; }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        .section-content {
+            margin-top: 2.5rem;
+        }
+
+        .text-content {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 900px;
+        }
+
+        /* Experience Cards */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .experience-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-card::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
-            height: 100%;
-            background: var(--secondary-color);
-            border-radius: 5px;
-            animation: skillProgress 1.5s ease-out forwards;
-            transform-origin: left;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
 
-        @keyframes skillProgress {
-            from {
-                transform: scaleX(0);
+        .experience-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(102, 126, 234, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .experience-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .experience-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #667eea;
+        }
+
+        .experience-company {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 3px;
+            animation: progressAnimation 1.5s ease-out;
+        }
+
+        @keyframes progressAnimation {
+            from { width: 0; }
+        }
+
+        /* Expertise Grid */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .expertise-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .expertise-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(102, 126, 234, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .expertise-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #667eea;
+        }
+
+        .expertise-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .expertise-description {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Philosophy Section */
+        .philosophy-content {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-top: 2.5rem;
+        }
+
+        /* Connect Section */
+        .connect-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin: 2.5rem 0;
+        }
+
+        .social-links a {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: transparent;
+            transform: translateY(-5px) rotate(360deg);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.5rem;
             }
 
-            to {
-                transform: scaleX(1);
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .expertise-grid,
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .philosophy-content {
+                padding: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header {
+                padding: 8rem 0 4rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .section {
+                margin-bottom: 4rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
             }
         }
     </style>
 </head>
-
 <body>
-    <!-- Background shapes -->
-    <div class="bg-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Jaganath M</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about_me.html" class="active">About</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="exp.html">Experience</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="page-header-content">
+            <h1 class="page-title">About Me</h1>
+            <p class="page-subtitle">
+                Dedicated to nurturing future innovators through comprehensive and dynamic teaching, 
+                bridging theory with practical application.
+            </p>
+        </div>
     </div>
 
-    <section class="container my-5">
-        <!-- <div class="content-section text-center">
-            <h1 class="mb-4 animate__animated animate__fadeInDown">About Me</h1>
-            <p class="lead animate__animated animate__fadeIn">Welcome! I am an Assistant Professor at M.Kumarasamy
-                College of Engineering, dedicated to nurturing future innovators and thinkers through comprehensive and
-                dynamic teaching.</p>
-        </div> -->
-
-        <div class="content-section">
-            <h2>Educational Background</h2>
-            <p>I hold an M.E.,(Ph.D) in Computer Science from Anna University, where I developed a strong foundation in
-            both technical competencies and critical problem-solving. Since entering academia, I have focused on making complex
-            technical subjects accessible and applicable, ensuring students gain both knowledge and practical insights that will
-            support them in future careers.</p>
-        </div>
-
-        <div class="content-section">
-            <h2>Professional Experience</h2>
-            <p>
-                My career encompasses diverse roles that have enabled me to refine my teaching methodology and technical proficiency.
-                Currently, as an Assistant Professor, I bring my expertise in Java, OOP, and database systems to the classroom,
-                designing courses that emphasize practical applications and real-world scenarios.
-            </p>
-            <div class="expertise-item">
-                <strong>Assistant Professor</strong>
-                <div class="skill-bar">
-                    <div class="skill-progress" style="width: 95%"></div>
-                </div>
-                <p>M.Kumarasamy College of Engineering</p>
+    <!-- Main Content -->
+    <div class="content-wrapper">
+        <!-- Educational Background -->
+        <section class="section">
+            <h2 class="section-title">Educational Background</h2>
+            <div class="section-content">
+                <p class="text-content">
+                    I hold an M.E. (Ph.D) in Computer Science from Anna University, where I developed a strong foundation in 
+                    both technical competencies and critical problem-solving. Since entering academia, I have focused on making 
+                    complex technical subjects accessible and applicable, ensuring students gain both knowledge and practical 
+                    insights that will support them in future careers.
+                </p>
             </div>
-            <div class="expertise-item">
-                <strong>Project Associate</strong>
-                <div class="skill-bar">
-                    <div class="skill-progress" style="width: 85%"></div>
-                </div>
-                <p>SRM University Kattankulathur Campus</p>
-            </div>
-            <div class="expertise-item">
-                <strong>Project Associate</strong>
-                <div class="skill-bar">
-                    <div class="skill-progress" style="width: 80%"></div>
-                </div>
-                <p>IIT Madars</p>
-            </div>
-        </div>
+        </section>
 
-        <!-- <div class="content-section">
-            <h2>Areas of Expertise</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="expertise-item">
-                        <i class="fab fa-java fa-2x mb-2 text-primary"></i>
-                        <h4>Java Programming</h4>
-                        <p>Expert in OOP, multithreading, and GUI development</p>
+        <!-- Professional Experience -->
+        <section class="section">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="section-content">
+                <p class="text-content">
+                    My career encompasses diverse roles that have enabled me to refine my teaching methodology and technical 
+                    proficiency. Currently, as an Assistant Professor, I bring my expertise in Java, OOP, and database systems 
+                    to the classroom, designing courses that emphasize practical applications and real-world scenarios.
+                </p>
+                <div class="experience-grid">
+                    <div class="experience-card">
+                        <h3 class="experience-title">Assistant Professor</h3>
+                        <p class="experience-company">M.Kumarasamy College of Engineering</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 95%"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="expertise-item">
-                        <i class="fas fa-cogs fa-2x mb-2 text-primary"></i>
-                        <h4>System Design</h4>
-                        <p>Specialized in personnel management systems</p>
+                    <div class="experience-card">
+                        <h3 class="experience-title">Project Associate</h3>
+                        <p class="experience-company">SRM University Kattankulathur Campus</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="experience-card">
+                        <h3 class="experience-title">Project Associate</h3>
+                        <p class="experience-company">IIT Madras</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 80%"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div> -->
+        </section>
 
-        <div class="content-section">
-            <h2>Areas of Expertise</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="expertise-item">
-                        <i class="fab fa-java fa-2x mb-2 text-primary"></i>
-                        <h4>Java Programming</h4>
-                        <p>Expert in Object-Oriented Programming (OOP), multithreading, and GUI development.</p>
+        <!-- Areas of Expertise -->
+        <section class="section">
+            <h2 class="section-title">Areas of Expertise</h2>
+            <div class="section-content">
+                <div class="expertise-grid">
+                    <div class="expertise-card">
+                        <div class="expertise-icon">
+                            <i class="fab fa-java"></i>
+                        </div>
+                        <h3 class="expertise-title">Java Programming</h3>
+                        <p class="expertise-description">
+                            Expert in Object-Oriented Programming (OOP), multithreading, and GUI development.
+                        </p>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="expertise-item">
-                        <i class="fas fa-cogs fa-2x mb-2 text-primary"></i>
-                        <h4>System Design</h4>
-                        <p>Specialized in personnel management systems with experience in real-world applications.</p>
+                    <div class="expertise-card">
+                        <div class="expertise-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3 class="expertise-title">System Design</h3>
+                        <p class="expertise-description">
+                            Specialized in personnel management systems with experience in real-world applications.
+                        </p>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="expertise-item">
-                        <i class="fas fa-database fa-2x mb-2 text-primary"></i>
-                        <h4>ERP Software Maintenance</h4>
-                        <p>Managing and maintaining the ERP software for the institution, ensuring smooth operations and data
-                            integrity.</p>
+                    <div class="expertise-card">
+                        <div class="expertise-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3 class="expertise-title">ERP Software Maintenance</h3>
+                        <p class="expertise-description">
+                            Managing and maintaining the ERP software for the institution, ensuring smooth operations and data integrity.
+                        </p>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="expertise-item">
-                        <i class="fas fa-laptop-code fa-2x mb-2 text-primary"></i>
-                        <h4>MERN & LAMP Stack Development</h4>
-                        <p>Skilled in both MERN and LAMP stacks, currently leading a five-member student team on a consultancy
-                            project similar to an e-commerce platform.</p>
+                    <div class="expertise-card">
+                        <div class="expertise-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="expertise-title">MERN & LAMP Stack Development</h3>
+                        <p class="expertise-description">
+                            Skilled in both MERN and LAMP stacks, currently leading a five-member student team on a consultancy project.
+                        </p>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="expertise-item">
-                        <i class="fas fa-utensils fa-2x mb-2 text-primary"></i>
-                        <h4>Food Calorie Management System</h4>
-                        <p>Working on a startup project for food calorie management as part of a team, under guidance from the
-                            Wadhwani Foundation, with five days of specialized training in startup development.</p>
+                    <div class="expertise-card">
+                        <div class="expertise-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3 class="expertise-title">Food Calorie Management</h3>
+                        <p class="expertise-description">
+                            Working on a startup project for food calorie management, under guidance from the Wadhwani Foundation.
+                        </p>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-
-
-        <div class="content-section">
-            <h2>Teaching Philosophy</h2>
-            <p>My teaching philosophy is deeply rooted in fostering a collaborative and interactive learning environment where students
-            are encouraged to explore, question, and engage deeply with the material. I believe that every student possesses unique
-            strengths and potential, and my role as an educator is to help them discover and develop these qualities through
-            tailored guidance and hands-on experiences.
-            
-            In my classroom, I emphasize the importance of critical thinking, creativity, and active participation. By integrating
-            project-based learning and real-world applications, I aim to bridge the gap between theoretical knowledge and practical
-            skills. This approach not only enhances students’ understanding but also empowers them to apply their learning
-            confidently in diverse professional and academic contexts.
-            
-            Mentorship is central to my philosophy. I prioritize one-on-one interactions to understand each student’s learning
-            style, goals, and challenges, enabling me to provide personalized support and guidance. I also value an inclusive
-            learning environment that welcomes diverse perspectives, fostering a culture where students feel respected, motivated,
-            and empowered to take ownership of their educational journey.
-            
-            Ultimately, my goal is to inspire lifelong learning by equipping students with the skills, mindset, and adaptability
-            necessary for success in an ever-evolving world. Through collaborative learning and hands-on experiences, I strive to
-            prepare my students not only for academic achievement but also for meaningful contributions to society and their chosen
-            fields.</p>
-        </div>
-
-        <div class="content-section text-center">
-            <h2>Connect With Me</h2>
-            <div class="social-links">
-                <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" class="email"><i class="fas fa-envelope"></i></a>
-                <a href="#" class="github"><i class="fab fa-github"></i></a>
+        <!-- Teaching Philosophy -->
+        <section class="section">
+            <h2 class="section-title">Teaching Philosophy</h2>
+            <div class="section-content">
+                <div class="philosophy-content">
+                    <p class="text-content" style="margin-bottom: 1.5rem;">
+                        My teaching philosophy is deeply rooted in fostering a collaborative and interactive learning environment 
+                        where students are encouraged to explore, question, and engage deeply with the material. I believe that 
+                        every student possesses unique strengths and potential, and my role as an educator is to help them discover 
+                        and develop these qualities through tailored guidance and hands-on experiences.
+                    </p>
+                    <p class="text-content" style="margin-bottom: 1.5rem;">
+                        In my classroom, I emphasize the importance of critical thinking, creativity, and active participation. 
+                        By integrating project-based learning and real-world applications, I aim to bridge the gap between 
+                        theoretical knowledge and practical skills. This approach not only enhances students' understanding but 
+                        also empowers them to apply their learning confidently in diverse professional and academic contexts.
+                    </p>
+                    <p class="text-content">
+                        Ultimately, my goal is to inspire lifelong learning by equipping students with the skills, mindset, and 
+                        adaptability necessary for success in an ever-evolving world. Through collaborative learning and hands-on 
+                        experiences, I strive to prepare my students not only for academic achievement but also for meaningful 
+                        contributions to society and their chosen fields.
+                    </p>
+                </div>
             </div>
-            <div class="mt-4">
-                <a href="#" class="btn btn-primary">View My CV</a>
-                <a href="mailto:example@email.com" class="btn btn-secondary">Contact Me</a>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+        <!-- Connect Section -->
+        <section class="section">
+            <div class="connect-section">
+                <h2 class="section-title">Connect With Me</h2>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/public-profile/settings" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="mailto:jagan_xxx@gmail.com" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="#" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+                <div class="action-buttons">
+                    <a href="#" class="btn btn-primary">
+                        <i class="fas fa-file-download"></i>
+                        Download CV
+                    </a>
+                    <a href="contact.html" class="btn btn-secondary">
+                        <i class="fas fa-paper-plane"></i>
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.animationPlayState = 'paused';
+            observer.observe(section);
+        });
+    </script>
 </body>
-
 </html>
