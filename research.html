@@ -1,131 +1,621 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research Interests & Projects</title>
-    <!-- Use Tailwind CSS for modern, utility-first styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <meta name="description" content="Research interests, publications, and projects focused on technology, sustainability, and innovation.">
-    <link rel="icon" href="favicon.ico">
+    <title>Research - Jaganath M</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', 'Segoe UI', 'Arial', sans-serif;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .card-hover:hover {
-            box-shadow: 0 8px 32px rgba(31, 41, 55, 0.2);
-            transform: translateY(-3px) scale(1.02);
-            transition: box-shadow 0.2s, transform 0.2s;
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #667eea;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 10rem 0 6rem;
+            text-align: center;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, #667eea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        /* Main Content */
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 5rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 2rem 0 3rem;
+            max-width: 800px;
+        }
+
+        /* Publications List */
+        .publications-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .publication-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 4px solid #667eea;
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .publication-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        .publication-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(102, 126, 234, 0.3);
+            transform: translateX(5px);
+        }
+
+        .publication-card:hover::before {
+            width: 100%;
+            opacity: 0.05;
+        }
+
+        .publication-number {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 40px;
+            height: 40px;
+            background: rgba(102, 126, 234, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .publication-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+            padding-right: 60px;
+            line-height: 1.5;
+        }
+
+        .publication-meta {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.6;
+        }
+
+        .citation-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: rgba(102, 126, 234, 0.2);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 15px;
+            color: #667eea;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 0.75rem;
+        }
+
+        /* Research Stats */
+        .research-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #667eea;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+        }
+
+        /* Research Interests */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .interest-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .interest-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(102, 126, 234, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .interest-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #667eea;
+        }
+
+        .interest-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .interest-description {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .publication-number {
+                top: 1rem;
+                right: 1rem;
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+
+            .publication-title {
+                font-size: 1.1rem;
+                padding-right: 50px;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .research-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .interests-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header {
+                padding: 8rem 0 4rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .content-wrapper {
+                padding: 2rem 1rem;
+            }
+
+            .publication-card {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Jaganath M</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about_me.html">About</a></li>
+                <li><a href="research.html" class="active">Research</a></li>
+                <li><a href="exp.html">Experience</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<body class="bg-gradient-to-br from-gray-50 to-blue-50 min-h-screen text-gray-900">
-
-    <main class="max-w-4xl mx-auto px-4 py-8">
-        <!-- Header Section -->
-        <section class="text-center mb-10">
-            <h1 class="text-4xl font-extrabold text-blue-800 mb-2 tracking-tight">Research Interests &amp; Projects</h1>
-            <p class="text-lg text-gray-600 mt-1 max-w-2xl mx-auto">
-                Advancing innovative solutions and impactful projects across environmental restoration, technology, and entrepreneurship. Research emphasizes sustainable practices and empowers the next generation of tech-driven innovators.
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="page-header-content">
+            <h1 class="page-title">Research & Innovation</h1>
+            <p class="page-subtitle">
+                Advancing innovative solutions and impactful research across wireless networks, technology education, 
+                and sustainable practices, empowering the next generation of tech-driven innovators.
             </p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content-wrapper">
+        <!-- Research Stats -->
+        <div class="research-stats">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <div class="stat-number">4+</div>
+                <div class="stat-label">Publications</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-quote-right"></i>
+                </div>
+                <div class="stat-number">7+</div>
+                <div class="stat-label">Citations</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="stat-number">PhD</div>
+                <div class="stat-label">In Progress</div>
+            </div>
+        </div>
+
+        <!-- Research Interests Section -->
+        <section class="section">
+            <h2 class="section-title">Research Interests</h2>
+            <p class="section-description">
+                My research focuses on wireless sensor networks, network protocols, and educational technology, 
+                with emphasis on practical applications and sustainable solutions.
+            </p>
+            <div class="interests-grid">
+                <div class="interest-card">
+                    <div class="interest-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3 class="interest-title">Wireless Sensor Networks</h3>
+                    <p class="interest-description">
+                        Network protocols, communication efficiency, and challenges in underwater and terrestrial environments.
+                    </p>
+                </div>
+                <div class="interest-card">
+                    <div class="interest-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="interest-title">Network Security</h3>
+                    <p class="interest-description">
+                        MANET routing protocols and security measures against various network attacks.
+                    </p>
+                </div>
+                <div class="interest-card">
+                    <div class="interest-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3 class="interest-title">Educational Technology</h3>
+                    <p class="interest-description">
+                        Smart classroom management systems and innovative teaching methodologies.
+                    </p>
+                </div>
+            </div>
         </section>
 
         <!-- Publications Section -->
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold text-blue-700 mb-4">Research Publications</h2>
-            <ul class="space-y-5">
-                <li class="bg-white rounded-lg p-5 shadow-sm border-l-4 border-blue-400">
-                    <span class="block text-base font-bold text-blue-700">Performance evaluation of MANET routing protocol under black hole attack using OPNET simulator</span>
-                    <span class="block text-sm text-gray-500 mt-1">M. Jaganath, R. Vikram, IJITEE 8 (7), 398-402, 2019. Cited by: 7</span>
-                </li>
-                <li class="bg-white rounded-lg p-5 shadow-sm border-l-4 border-blue-400">
-                    <span class="block text-base font-bold text-blue-700">EDUSYNC – Smart Classroom Management System</span>
-                    <span class="block text-sm text-gray-500 mt-1">M.Jaganath, Nandhana, Dharshini, Monesha, International Research Journal on Advanced Engineering Hub 2 (12), 2703-2706, 2024</span>
-                </li>
-                <li class="bg-white rounded-lg p-5 shadow-sm border-l-4 border-blue-400">
-                    <span class="block text-base font-bold text-blue-700">A Comprehensive Study About Various MANET Routing Protocols</span>
-                    <span class="block text-sm text-gray-500 mt-1">M. Jaganath, Mr. R. Vikram, Intelligent Computing Research Studies in Life Science, 113-118, 2019</span>
-                </li>
-                <li class="bg-white rounded-lg p-5 shadow-sm border-l-4 border-blue-400">
-                    <span class="block text-base font-bold text-blue-700">An Exhaustive Consideration Of Wired and Wireless Network Simulators</span>
-                    <span class="block text-sm text-gray-500 mt-1">AECOWWN Simulators, International Journal of Recent Technology and Engineering (IJRTE) 8 (2S4), 2019</span>
-                </li>
-            </ul>
-        </section>
-
-        <!-- Projects Section -->
-        <!-- <section>
-            <h2 class="text-2xl font-semibold text-blue-700 mb-4">Highlighted Projects</h2>
-            <div class="grid gap-8 md:grid-cols-2">
-
-                <!-- MERN Stack Application Maintenance -->
-                <div class="card-hover bg-white rounded-xl shadow-md p-6 flex flex-col">
-                    <h3 class="text-xl font-bold text-blue-600 mb-2 text-center">MERN Stack Application Maintenance</h3>
-                    <p class="text-gray-500 mb-3 text-center">Maintenance, optimization, and scaling of MERN stack applications for robust performance and reliability.</p>
-                    <h4 class="font-semibold text-blue-700 mb-1">Methodology:</h4>
-                    <ul class="list-disc ml-4 text-gray-600 mb-2 space-y-1">
-                        <li><strong>M:</strong> MongoDB management for optimized data storage and querying.</li>
-                        <li><strong>E:</strong> Express.js for backend efficiency and stable APIs.</li>
-                        <li><strong>R:</strong> React component optimization for responsive UIs.</li>
-                        <li><strong>N:</strong> Node.js maintenance for server-side stability.</li>
-                    </ul>
-                    <h4 class="font-semibold text-blue-700 mb-1">Outcomes:</h4>
-                    <p class="text-gray-600">Increased performance, scalability, reduced downtime, and improved user experience.</p>
+        <section class="section">
+            <h2 class="section-title">Research Publications</h2>
+            <p class="section-description">
+                Peer-reviewed publications contributing to the fields of network security, educational technology, 
+                and wireless communications.
+            </p>
+            <div class="publications-list">
+                <div class="publication-card">
+                    <div class="publication-number">1</div>
+                    <h3 class="publication-title">
+                        Performance evaluation of MANET routing protocol under black hole attack using OPNET simulator
+                    </h3>
+                    <div class="publication-meta">
+                        M. Jaganath, R. Vikram<br>
+                        IJITEE 8 (7), 398-402, 2019
+                    </div>
+                    <span class="citation-badge">
+                        <i class="fas fa-quote-right"></i> Cited by: 7
+                    </span>
                 </div>
 
-                <!-- LAMP Stack Development -->
-                <div class="card-hover bg-white rounded-xl shadow-md p-6 flex flex-col">
-                    <h3 class="text-xl font-bold text-blue-600 mb-2 text-center">LAMP Stack Development</h3>
-                    <p class="text-gray-500 mb-3 text-center">Building, optimizing, and maintaining LAMP stack applications for stability, scalability, and efficient data management.</p>
-                    <h4 class="font-semibold text-blue-700 mb-1">Methodology:</h4>
-                    <ul class="list-disc ml-4 text-gray-600 mb-2 space-y-1">
-                        <li><strong>L:</strong> Linux server configuration and security.</li>
-                        <li><strong>A:</strong> Apache setup for efficient requests and balancing.</li>
-                        <li><strong>M:</strong> MySQL database design and tuning.</li>
-                        <li><strong>P:</strong> PHP for dynamic, user-friendly applications.</li>
-                    </ul>
-                    <h4 class="font-semibold text-blue-700 mb-1">Outcomes:</h4>
-                    <p class="text-gray-600">Enhanced performance, secure data, reliable server operation, and scalable apps.</p>
+                <div class="publication-card">
+                    <div class="publication-number">2</div>
+                    <h3 class="publication-title">
+                        EDUSYNC – Smart Classroom Management System
+                    </h3>
+                    <div class="publication-meta">
+                        M. Jaganath, Nandhana, Dharshini, Monesha<br>
+                        International Research Journal on Advanced Engineering Hub 2 (12), 2703-2706, 2024
+                    </div>
                 </div>
 
-                <!-- MSME Idea Hackathon 4.0 -->
-                <div class="card-hover bg-white rounded-xl shadow-md p-6 flex flex-col">
-                    <h3 class="text-xl font-bold text-blue-600 mb-2 text-center">MSME Idea Hackathon 4.0</h3>
-                    <p class="text-gray-500 mb-3 text-center">Review and mentorship for student innovators in AR/VR, IoT, sensors, and water management.</p>
-                    <h4 class="font-semibold text-blue-700 mb-1">Methodology:</h4>
-                    <ul class="list-disc ml-4 text-gray-600 mb-2 space-y-1">
-                        <li><strong>Assessment:</strong> Evaluated proposals for innovation and impact.</li>
-                        <li><strong>Mentorship:</strong> Technical guidance and strategic planning.</li>
-                        <li><strong>Feedback:</strong> Iterative improvements through feedback loops.</li>
-                    </ul>
-                    <h4 class="font-semibold text-blue-700 mb-1">Outcomes:</h4>
-                    <p class="text-gray-600">Empowered students, promoted sustainability, and enhanced real-world tech exposure.</p>
+                <div class="publication-card">
+                    <div class="publication-number">3</div>
+                    <h3 class="publication-title">
+                        A Comprehensive Study About Various MANET Routing Protocols
+                    </h3>
+                    <div class="publication-meta">
+                        M. Jaganath, Mr. R. Vikram<br>
+                        Intelligent Computing Research Studies in Life Science, 113-118, 2019
+                    </div>
                 </div>
 
-                <!-- Marine Ecosystem Restoration and Pollution (MERP) -->
-                <div class="card-hover bg-white rounded-xl shadow-md p-6 flex flex-col">
-                    <h3 class="text-xl font-bold text-blue-600 mb-2 text-center">Marine Ecosystem Restoration and Pollution (MERP)</h3>
-                    <p class="text-gray-500 mb-3 text-center">Restoring marine ecosystems and reducing pollution via machine learning, restoration techniques, data analysis, and community engagement.</p>
-                    <h4 class="font-semibold text-blue-700 mb-1">Methodology:</h4>
-                    <ul class="list-disc ml-4 text-gray-600 mb-2 space-y-1">
-                        <li><strong>M:</strong> Machine learning for ecosystem health insights.</li>
-                        <li><strong>E:</strong> Restoration techniques tailored to marine environments.</li>
-                        <li><strong>R:</strong> Data analysis to measure project impacts.</li>
-                        <li><strong>N:</strong> Community engagement for sustainable practices.</li>
-                    </ul>
-                    <h4 class="font-semibold text-blue-700 mb-1">Outcomes:</h4>
-                    <p class="text-gray-600">Improved biodiversity, water quality, and community involvement.</p>
+                <div class="publication-card">
+                    <div class="publication-number">4</div>
+                    <h3 class="publication-title">
+                        An Exhaustive Consideration Of Wired and Wireless Network Simulators
+                    </h3>
+                    <div class="publication-meta">
+                        AECOWWN Simulators<br>
+                        International Journal of Recent Technology and Engineering (IJRTE) 8 (2S4), 2019
+                    </div>
                 </div>
             </div>
-        </section> -->
-    </main>
+        </section>
+    </div>
 
     <!-- Footer -->
-    <footer class="mt-12 text-center text-gray-400 text-sm pb-6">
+    <footer style="text-align: center; padding: 3rem 2rem; color: rgba(255, 255, 255, 0.3); font-size: 0.9rem;">
         &copy; 2025 M. Jaganath &mdash; All rights reserved.
     </footer>
-</body>
 
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate numbers on scroll
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumber = entry.target.querySelector('.stat-number');
+                    const finalValue = statNumber.textContent;
+                    
+                    if (!statNumber.classList.contains('animated')) {
+                        statNumber.classList.add('animated');
+                        
+                        if (finalValue.includes('+') && !finalValue.includes('PhD')) {
+                            const numValue = parseInt(finalValue);
+                            let current = 0;
+                            const increment = numValue / 30;
+                            const timer = setInterval(() => {
+                                current += increment;
+                                if (current >= numValue) {
+                                    statNumber.textContent = finalValue;
+                                    clearInterval(timer);
+                                } else {
+                                    statNumber.textContent = Math.floor(current) + '+';
+                                }
+                            }, 50);
+                        }
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stat-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
 </html>
