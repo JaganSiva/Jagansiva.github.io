@@ -1,243 +1,606 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Jaganath M Portfolio</title>
-
-    <!-- Modern Bootstrap & Google Fonts -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaganath M - Portfolio</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Inter', Arial, sans-serif;
-            background: #f4f6fb;
-            color: #222;
-        }
-
-        .top-bar {
-            background: linear-gradient(90deg, #007bff 0%, #00c6ff 100%);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            background: #0a0a0a;
             color: #fff;
-            padding: 0.5rem 0;
-            font-size: 0.95rem;
-            letter-spacing: 0.02em;
         }
 
-        .top-bar a {
-            color: #fff !important;
-            text-decoration: none;
-            transition: color 0.2s;
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            transition: all 0.4s ease;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
         }
 
-        .top-bar a:hover {
-            color: #e0e0e0 !important;
+        nav.scrolled {
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .site-navbar {
-            background: #fff;
-            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
-            padding: 0.75rem 0;
-        }
-
-        .site-logo a {
-            text-decoration: none;
-            color: #007bff;
-            font-weight: 700;
-            font-size: 1.5rem;
-            letter-spacing: 0.03em;
-        }
-
-        .navbar-nav .nav-link {
-            color: #222;
-            font-weight: 500;
-            padding: 0.5rem 1.2rem !important;
-            border-radius: 6px;
-            transition: background 0.2s, color 0.2s;
-        }
-
-        .navbar-nav .nav-link:hover,
-        .navbar-nav .nav-link.active {
-            background: #f0f4ff;
-            color: #007bff;
-        }
-
-        .hero {
-            background-image: url('images/hero_1.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            height: 500px;
-            position: relative;
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
+            justify-content: space-between;
             align-items: center;
         }
 
-        .hero::before {
-            content: "";
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
             position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.55);
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) translate(-50%, -50%); opacity: 0.5; }
+            50% { transform: scale(1.1) translate(-50%, -50%); opacity: 0.8; }
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
             z-index: 1;
         }
 
         .hero-content {
-            position: relative;
-            z-index: 2;
+            animation: fadeInLeft 1s ease;
         }
 
-        .profile-img {
-            width: 250px;
-            height: 250px;
-            border: 5px solid #fff;
-            border-radius: 50%;
-            object-fit: cover;
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-label {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 50px;
+            color: #667eea;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
             margin-bottom: 1.5rem;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
         }
 
-        .display-4 {
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff 0%, #667eea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .lead {
-            font-size: 1.25rem;
-            font-weight: 400;
-            line-height: 1.7;
-            color: #eaeaea;
-            margin-bottom: 2rem;
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 1rem;
         }
 
         .btn-primary {
-            background: linear-gradient(90deg, #007bff 0%, #00c6ff 100%);
-            border: none;
-            font-weight: 600;
-            padding: 0.75rem 2rem;
-            border-radius: 30px;
-            box-shadow: 0 2px 8px rgba(0,123,255,0.12);
-            transition: background 0.2s;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
         }
 
         .btn-primary:hover {
-            background: linear-gradient(90deg, #0056b3 0%, #0096c7 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
         }
 
-        @media (max-width: 992px) {
-            .navbar-nav .nav-link {
-                padding: 0.75rem 1rem !important;
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Hero Image Section */
+        .hero-image {
+            position: relative;
+            animation: fadeInRight 1s ease;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .image-container {
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .image-wrapper {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+        }
+
+        .image-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+            border-radius: 30px;
+            z-index: -1;
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .profile-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 28px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .floating-elements {
+            position: absolute;
+            inset: 0;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1rem 1.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .card-1 {
+            top: 10%;
+            right: -10%;
+            animation-delay: 0s;
+        }
+
+        .card-2 {
+            bottom: 15%;
+            left: -10%;
+            animation-delay: 1s;
+        }
+
+        .floating-card i {
+            font-size: 1.5rem;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .floating-card span {
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: block;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: transparent;
+            transform: translateY(-3px);
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        .scroll-indicator span {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .scroll-indicator i {
+            color: #667eea;
+            font-size: 1.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+
+            .hero-content {
+                order: 2;
+            }
+
+            .hero-image {
+                order: 1;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            h1 {
+                font-size: 3rem;
             }
         }
 
         @media (max-width: 768px) {
-            .top-bar .d-md-inline-block {
-                display: none !important;
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                background: rgba(10, 10, 10, 0.98);
+                flex-direction: column;
+                padding: 5rem 2rem;
+                transition: right 0.3s ease;
+                gap: 2rem;
             }
-            .hero {
-                height: auto !important;
-                padding: 3rem 1rem;
+
+            .nav-links.active {
+                right: 0;
             }
-            .profile-img {
-                width: 180px;
-                height: 180px;
+
+            .menu-toggle {
+                display: block;
             }
-            .display-4 {
-                font-size: 2.2rem;
+
+            h1 {
+                font-size: 2.5rem;
             }
-            .lead {
-                font-size: 1.05rem;
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 0.875rem 2rem;
+                font-size: 0.95rem;
+            }
+
+            .floating-card {
+                display: none;
             }
         }
 
-        @media (max-width: 576px) {
-            .site-logo a {
-                font-size: 1.1rem;
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
             }
-            .profile-img {
-                width: 120px;
-                height: 120px;
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .hero-container {
+                padding: 0 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
             }
         }
     </style>
 </head>
-
 <body>
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-12 d-flex flex-wrap justify-content-between align-items-center">
-                    <div>
-                        <a href="mailto:example@email.com" class="me-3">
-                            <i class="fas fa-envelope me-2"></i>
-                            <span class="d-none d-md-inline-block">jagan_xxx@gmail.com</span>
-                        </a>
-                        <a href="tel:+12345678901" class="me-3">
-                            <i class="fas fa-phone me-2"></i>
-                            <span class="d-none d-md-inline-block">+91 - 97905XXXXX</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#" class="me-2"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="me-2"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.linkedin.com/public-profile/settings?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_edit_contact-info%3B%2FtwfBZ4CTHGKGaZBl9I8vg%3D%3D" class="me-2"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="me-2"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Navigation -->
-    <nav class="site-navbar navbar navbar-expand-lg sticky-top">
-        <div class="container">
-            <div class="site-logo">
-                <a href="index.html">
-                    <span>Jaganath M</span>
-                </a>
-            </div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">Jaganath M</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="about_me.html">About</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="exp.html">Experience</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a href="about_me.html" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="research.html" class="nav-link">Research</a></li>
-                    <li class="nav-item"><a href="#teaching-section" class="nav-link">Teaching</a></li>
-                    <!-- <li class="nav-item"><a href="#publications-section" class="nav-link">Publications</a></li> -->
-                    <li class="nav-item"><a href="exp.html" class="nav-link">Experience</a></li>
-                    <li class="nav-item"><a href="#certifications-section" class="nav-link">Certifications</a></li>
-                    <li class="nav-item"><a href="#events-section" class="nav-link">Events</a></li>
-                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-                </ul>
-            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <div class="hero">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center justify-content-center text-center">
-                <div class="col-12 hero-content">
-                    <img src="Jagan.jpeg" alt="Profile Picture" class="profile-img">
-                    <h1 class="display-4 text-white mb-3">Welcome!</h1>
-                    <p class="lead text-white mb-4">
-                        Hello! I am Jaganath M, an Assistant Professor at M.Kumarasamy College of Engineering. My professional journey is rooted
-                        in a commitment to advancing knowledge and technical skills in Java programming, Object-Oriented Programming, and
-                        Database Management Systems. With an academic and industry background that blends hands-on expertise with a theoretical
-                        foundation, I am dedicated to guiding students toward a comprehensive understanding of computer science and engineering
-                        principles.
-                    </p>
-                    <a href="#portfolio" class="btn btn-primary btn-lg">Explore My Portfolio</a>
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-label">Assistant Professor</div>
+                <h1>Jaganath M</h1>
+                <div class="hero-subtitle">Educator | Researcher | Innovator</div>
+                <p class="hero-description">
+                    Hello! I am Jaganath M, an Assistant Professor at M.Kumarasamy College of Engineering. My professional journey is rooted in a commitment to advancing knowledge and technical skills in Java programming, Object-Oriented Programming, and Database Management Systems. With an academic and industry background that blends hands-on expertise with a theoretical foundation, I am dedicated to guiding students toward a comprehensive understanding of computer science and engineering principles.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#portfolio" class="btn btn-primary">
+                        View Portfolio
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="contact.html" class="btn btn-secondary">
+                        Get In Touch
+                    </a>
+                </div>
+                <div class="social-links">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="mailto:jagan_xxx@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <div class="image-container">
+                    <div class="image-wrapper">
+                        <img src="Jagan.jpeg" alt="Jaganath M" class="profile-image">
+                    </div>
+                    <div class="floating-elements">
+                        <div class="floating-card card-1">
+                            <i class="fas fa-code"></i>
+                            <span>Programming Expert</span>
+                        </div>
+                        <div class="floating-card card-2">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Educator</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        
+        <div class="scroll-indicator">
+            <span>Scroll Down</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
-
 </html>
