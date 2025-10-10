@@ -5,63 +5,106 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact Me</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(120deg, #dbeafe 0%, #a7f3d0 100%);
+      min-height: 100vh;
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+      backdrop-filter: blur(9.5px);
+      -webkit-backdrop-filter: blur(9.5px);
+      border-radius: 1.5rem;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+    .fade-in {
+      animation: fade-in 1.2s ease;
+    }
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(16px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .contact-hover:hover {
+      transform: translateY(-4px) scale(1.04);
+      box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.22);
+      transition: all 0.2s;
+    }
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
-  <div class="max-w-4xl mx-auto p-6">
-    
-    <!-- Page Header -->
-    <header class="mb-8 text-center">
-      <h1 class="text-3xl font-semibold mb-2">Contact Me</h1>
-      <p class="text-gray-600">Get in touch through email or connect with me on LinkedIn & GitHub.</p>
+<body class="font-sans text-gray-800">
+  <div class="max-w-4xl mx-auto px-4 py-12 fade-in">
+    <!-- Header Section -->
+    <header class="mb-12 text-center">
+      <h1 class="text-5xl font-extrabold bg-gradient-to-r from-blue-600 to-green-400 bg-clip-text text-transparent drop-shadow-lg mb-4">Let's Connect!</h1>
+      <p class="text-lg text-gray-700 max-w-2xl mx-auto">I'm always happy to hear from you! Whether you have a question, opportunity, or just want to say hello, feel free to reach out via the methods below or send a message directly.</p>
     </header>
 
-    <!-- Contact Info -->
-    <section class="grid md:grid-cols-3 gap-6 mb-10">
+    <!-- Contact Methods with Icons and Glass Effect -->
+    <section class="grid md:grid-cols-3 gap-8 mb-12">
       <!-- Email -->
-      <div class="bg-white rounded-2xl shadow p-6 text-center">
-        <h2 class="font-medium text-lg mb-2">Email</h2>
-        <a href="mailto:yourname@example.com" class="text-blue-600 underline">
+      <div class="glass p-7 text-center transition-all contact-hover">
+        <div class="flex justify-center mb-3">
+          <!-- Mail Icon - Heroicons -->
+          <svg class="w-10 h-10 text-blue-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25H4.5a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-.878 1.796l-7.122 5.634a2.25 2.25 0 01-2.76 0L3.128 8.789A2.25 2.25 0 012.25 6.993V6.75"/>
+          </svg>
+        </div>
+        <h2 class="font-semibold text-xl mb-1">Email</h2>
+        <a href="mailto:jaganjgn986@gmail.com" class="text-blue-700 underline break-all transition hover:text-blue-900">
           jaganjgn986@gmail.com
         </a>
       </div>
       <!-- LinkedIn -->
-      <div class="bg-white rounded-2xl shadow p-6 text-center">
-        <h2 class="font-medium text-lg mb-2">LinkedIn</h2>
-        <a href="https://www.linkedin.com/in/jaganath-m-34b06bb5" target="_blank" class="text-blue-600 underline">
+      <div class="glass p-7 text-center transition-all contact-hover">
+        <div class="flex justify-center mb-3">
+          <!-- LinkedIn Icon -->
+          <svg class="w-10 h-10 text-blue-700" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11.75 19h-3v-10h3v10zm-1.5-11.278c-.966 0-1.75-.792-1.75-1.767 0-.976.784-1.768 1.75-1.768s1.75.792 1.75 1.768c0 .975-.784 1.767-1.75 1.767zm13.25 11.278h-3v-5.604c0-1.337-.024-3.063-1.866-3.063-1.87 0-2.157 1.46-2.157 2.968v5.699h-3v-10h2.887v1.367h.041c.403-.765 1.389-1.571 2.857-1.571 3.057 0 3.624 2.013 3.624 4.63v5.574z"/>
+          </svg>
+        </div>
+        <h2 class="font-semibold text-xl mb-1">LinkedIn</h2>
+        <a href="https://www.linkedin.com/in/jaganath-m-34b06bb5" target="_blank" class="text-blue-600 underline break-all hover:text-blue-900">
           linkedin.com/in/jaganath-m-34b06bb5
         </a>
       </div>
       <!-- GitHub -->
-      <div class="bg-white rounded-2xl shadow p-6 text-center">
-        <h2 class="font-medium text-lg mb-2">GitHub</h2>
-        <a href="https://github.com/JaganSiva" target="_blank" class="text-blue-600 underline">
-          https://github.com/JaganSiva
+      <div class="glass p-7 text-center transition-all contact-hover">
+        <div class="flex justify-center mb-3">
+          <!-- GitHub Icon -->
+          <svg class="w-10 h-10 text-gray-800" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.85 10.92.57.11.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.19.69-3.87-1.39-3.87-1.39-.52-1.33-1.27-1.69-1.27-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.76 2.67 1.25 3.32.95.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18a10.96 10.96 0 012.87-.39c.97.01 1.95.13 2.87.39 2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.76.11 3.05.73.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.25 5.69.41.35.77 1.04.77 2.1 0 1.52-.01 2.75-.01 3.13 0 .3.21.66.79.55C20.71 21.39 24 17.08 24 12c0-6.27-5.23-11.5-12-11.5z"/>
+          </svg>
+        </div>
+        <h2 class="font-semibold text-xl mb-1">GitHub</h2>
+        <a href="https://github.com/JaganSiva" target="_blank" class="text-gray-700 underline break-all hover:text-gray-900">
+          github.com/JaganSiva
         </a>
       </div>
     </section>
 
-    <!-- Contact Form (Optional) -->
-    <section class="bg-white rounded-2xl shadow p-6">
-      <h2 class="text-xl font-semibold mb-4">Send me a message</h2>
-      <form action="#" method="post" class="space-y-4">
+    <!-- Contact Form with Animation and Enhanced UI -->
+    <section class="glass p-8 shadow-lg relative overflow-hidden">
+      <span class="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-gradient-to-tr from-blue-200 via-blue-400 to-green-200 opacity-30 animate-pulse"></span>
+      <h2 class="text-2xl font-bold mb-3 text-center text-gray-900">Send Me a Message</h2>
+      <form action="#" method="post" class="space-y-5 max-w-lg mx-auto">
         <div>
-          <label class="block text-sm font-medium mb-1">Name</label>
-          <input type="text" name="name" required class="w-full border rounded-lg px-3 py-2 text-sm" />
+          <label class="block text-sm font-medium mb-1 text-gray-700">Name</label>
+          <input type="text" name="name" required class="w-full border border-blue-200 rounded-lg px-4 py-2 text-base bg-white/80 focus:ring-2 focus:ring-blue-200 transition" placeholder="Your Name" />
         </div>
         <div>
-          <label class="block text-sm font-medium mb-1">Email</label>
-          <input type="email" name="email" required class="w-full border rounded-lg px-3 py-2 text-sm" />
+          <label class="block text-sm font-medium mb-1 text-gray-700">Email</label>
+          <input type="email" name="email" required class="w-full border border-blue-200 rounded-lg px-4 py-2 text-base bg-white/80 focus:ring-2 focus:ring-blue-200 transition" placeholder="you@email.com" />
         </div>
         <div>
-          <label class="block text-sm font-medium mb-1">Message</label>
-          <textarea name="message" rows="4" required class="w-full border rounded-lg px-3 py-2 text-sm"></textarea>
+          <label class="block text-sm font-medium mb-1 text-gray-700">Message</label>
+          <textarea name="message" rows="5" required class="w-full border border-blue-200 rounded-lg px-4 py-2 text-base bg-white/80 focus:ring-2 focus:ring-blue-200 transition" placeholder="Type your message here..."></textarea>
         </div>
-        <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg">
-          Send
+        <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-green-400 text-white font-bold px-6 py-3 rounded-xl shadow-lg hover:from-blue-500 hover:to-green-300 transition-all">
+          Send Message
         </button>
       </form>
     </section>
-
   </div>
 </body>
 </html>
