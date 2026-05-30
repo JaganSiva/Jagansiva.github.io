@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Experience - Jaganath M</title>
+<title>Research - Jaganath M</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -19,7 +19,7 @@ html{scroll-behavior:smooth;}
   --shadow:0 1px 3px rgba(0,0,0,0.08);--shadow-md:0 4px 12px rgba(0,0,0,0.08);--shadow-lg:0 10px 30px rgba(0,0,0,0.1);
 }
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
-nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:1rem 0;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:box-shadow .3s;}
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:1rem 0;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:box-shadow .3s;}
 nav.scrolled{box-shadow:var(--shadow-md);}
 .nav-container{max-width:1280px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;}
 .logo{font-size:1.35rem;font-weight:700;color:var(--accent);letter-spacing:-.02em;}
@@ -34,57 +34,59 @@ nav.scrolled{box-shadow:var(--shadow-md);}
 .page-label::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);animation:dot 1.8s ease-in-out infinite;}
 @keyframes dot{0%,100%{opacity:1}50%{opacity:.25}}
 .page-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);color:var(--text);margin-bottom:.8rem;}
-.page-subtitle{font-size:.97rem;line-height:1.8;color:var(--text3);max-width:540px;margin:0 auto;}
-.main{max-width:1100px;margin:0 auto;padding:3.5rem 2rem 5rem;}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+.page-subtitle{font-size:.97rem;line-height:1.8;color:var(--text3);max-width:580px;margin:0 auto 1.75rem;}
+.stats-row{display:flex;gap:1px;background:var(--border);border-radius:14px;overflow:hidden;border:1px solid var(--border);max-width:420px;margin:0 auto;}
+.stat-item{flex:1;padding:1rem;text-align:center;background:var(--white);}
+.stat-item:not(:last-child){border-right:1px solid var(--border);}
+.stat-num{font-size:1.7rem;font-weight:800;color:var(--accent);line-height:1;}
+.stat-lbl{font-size:.68rem;color:var(--text4);margin-top:.2rem;text-transform:uppercase;letter-spacing:.06em;}
+.main{max-width:1000px;margin:0 auto;padding:3.5rem 2rem 5rem;}
 .section-heading{display:flex;align-items:center;gap:1rem;margin-bottom:1.75rem;}
 .section-heading h2{font-size:1.15rem;font-weight:700;color:var(--text);white-space:nowrap;}
 .section-heading .line{flex:1;height:1px;background:var(--border);}
-/* SKILLS */
-.skill-list{display:flex;flex-direction:column;gap:1.1rem;margin-bottom:2.5rem;}
-.skill-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;}
-.skill-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;}
-.skill-name{font-size:.85rem;font-weight:600;color:var(--text2);}
-.skill-pct{font-size:.78rem;font-weight:700;color:var(--accent);}
-.skill-bar{height:5px;background:var(--bg2);border-radius:50px;overflow:hidden;}
-.skill-fill{height:100%;border-radius:50px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width 1s ease;}
-/* LANGUAGES */
-.lang-list{display:flex;flex-direction:column;gap:.75rem;}
-.lang-item{display:flex;align-items:center;justify-content:space-between;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem;}
-.lang-name{font-size:.85rem;font-weight:600;color:var(--text2);}
-.lang-badge{font-size:.72rem;font-weight:600;padding:.2rem .65rem;border-radius:50px;background:var(--accent-light);border:1px solid var(--accent-mid);color:#5b21b6;}
-/* TIMELINE */
-.timeline{position:relative;padding-left:1.5rem;}
-.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:2px;background:var(--border);border-radius:2px;}
-.timeline-item{position:relative;margin-bottom:1.75rem;}
-.timeline-item::before{content:'';position:absolute;left:-1.88rem;top:8px;width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--white);box-shadow:0 0 0 2px var(--accent-mid);}
-.timeline-item.current::before{background:var(--accent);animation:pulse 2s ease-in-out infinite;}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 2px var(--accent-mid)}50%{box-shadow:0 0 0 5px rgba(79,70,229,0.15)}}
-.tl-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.25rem;transition:border-color .25s,box-shadow .25s;}
-.tl-card:hover{border-color:var(--accent-mid);box-shadow:var(--shadow-md);}
-.tl-header{display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem;margin-bottom:.5rem;}
-.tl-title{font-size:.92rem;font-weight:700;color:var(--text);}
-.tl-badge{font-size:.68rem;font-weight:600;padding:.2rem .65rem;border-radius:50px;white-space:nowrap;flex-shrink:0;}
-.badge-current{background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;}
-.badge-past{background:var(--bg2);border:1px solid var(--border);color:var(--text4);}
-.tl-org{font-size:.8rem;font-weight:600;color:var(--accent);margin-bottom:.3rem;}
-.tl-period{font-size:.75rem;color:var(--text4);margin-bottom:.6rem;}
-.tl-desc{font-size:.82rem;color:var(--text3);line-height:1.65;}
-/* EDUCATION */
-.edu-list{display:flex;flex-direction:column;gap:1.1rem;}
-.edu-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.25rem;display:flex;gap:1rem;align-items:flex-start;transition:border-color .25s,box-shadow .25s;}
-.edu-card:hover{border-color:var(--accent-mid);box-shadow:var(--shadow-md);}
-.edu-icon{width:40px;height:40px;border-radius:10px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.edu-icon i{font-size:.95rem;color:var(--accent);}
-.edu-degree{font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:.2rem;}
-.edu-inst{font-size:.8rem;font-weight:600;color:var(--accent);margin-bottom:.2rem;}
-.edu-period{font-size:.75rem;color:var(--text4);margin-bottom:.4rem;}
-.edu-desc{font-size:.8rem;color:var(--text3);line-height:1.6;}
+/* INTERESTS */
+.interests-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:3.5rem;}
+.interest-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.4rem;transition:transform .25s,border-color .25s,box-shadow .25s;}
+.interest-card:hover{transform:translateY(-4px);border-color:var(--accent-mid);box-shadow:var(--shadow-md);}
+.int-icon{width:40px;height:40px;border-radius:10px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;margin-bottom:.85rem;}
+.int-icon i{font-size:.95rem;color:var(--accent);}
+.interest-card h3{font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:.4rem;}
+.interest-card p{font-size:.8rem;color:var(--text3);line-height:1.65;}
+/* PUBLICATIONS */
+.pub-list{display:flex;flex-direction:column;gap:1.1rem;}
+.pub-card{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:1.5rem 1.75rem;display:grid;grid-template-columns:auto 1fr auto;gap:1.25rem;align-items:start;transition:transform .25s,border-color .25s,box-shadow .25s;}
+.pub-card:hover{transform:translateY(-3px);border-color:var(--accent-mid);box-shadow:var(--shadow-md);}
+.pub-num{width:38px;height:38px;border-radius:10px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:800;flex-shrink:0;}
+.pub-title{font-size:.95rem;font-weight:700;color:var(--text);line-height:1.5;margin-bottom:.5rem;}
+.pub-authors{font-size:.8rem;color:var(--text3);margin-bottom:.5rem;}
+.pub-authors .me{color:var(--accent);font-weight:600;}
+.pub-meta{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.6rem;}
+.pub-journal{font-size:.75rem;font-weight:500;color:var(--text3);background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:.18rem .6rem;}
+.pub-year{font-size:.75rem;font-weight:600;color:var(--accent);background:var(--accent-light);border:1px solid var(--accent-mid);border-radius:6px;padding:.18rem .6rem;}
+.pub-tags{display:flex;flex-wrap:wrap;gap:.4rem;}
+.pub-tag{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;padding:.15rem .6rem;border-radius:50px;background:var(--bg2);border:1px solid var(--border);color:var(--text4);}
+.pub-badges{display:flex;flex-direction:column;gap:.5rem;align-items:flex-end;flex-shrink:0;}
+.badge-cited{display:inline-flex;align-items:center;gap:.35rem;padding:.35rem .85rem;border-radius:50px;background:var(--accent-light);border:1px solid var(--accent-mid);font-size:.72rem;font-weight:700;color:#5b21b6;white-space:nowrap;}
+.badge-new{display:inline-flex;align-items:center;gap:.35rem;padding:.35rem .85rem;border-radius:50px;background:#f0fdf4;border:1px solid #bbf7d0;font-size:.72rem;font-weight:700;color:#166534;white-space:nowrap;}
+.btn-scholar-sm{display:inline-flex;align-items:center;gap:.4rem;padding:.4rem .9rem;border-radius:8px;background:var(--bg2);border:1px solid var(--border2);color:var(--text3);font-size:.72rem;font-weight:600;text-decoration:none;transition:all .22s;white-space:nowrap;}
+.btn-scholar-sm:hover{background:var(--accent-light);border-color:var(--accent-mid);color:var(--accent);}
+/* CTA */
+.scholar-cta{margin-top:2.5rem;background:linear-gradient(135deg,var(--accent-light),var(--bg3));border:1px solid var(--accent-mid);border-radius:18px;padding:1.75rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;}
+.cta-left{display:flex;align-items:center;gap:1rem;}
+.cta-icon{width:48px;height:48px;border-radius:12px;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cta-icon i{font-size:1.2rem;color:#fff;}
+.cta-left h3{font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:.25rem;}
+.cta-left p{font-size:.82rem;color:var(--text3);}
+.btn-scholar-main{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.6rem;border-radius:50px;background:var(--accent);color:#fff;text-decoration:none;font-size:.88rem;font-weight:600;box-shadow:0 4px 14px rgba(79,70,229,0.28);transition:all .25s;white-space:nowrap;}
+.btn-scholar-main:hover{background:#4338ca;transform:translateY(-2px);}
 footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--text4);font-size:.8rem;background:var(--white);}
-@media(max-width:900px){.two-col{grid-template-columns:1fr;}}
 @media(max-width:768px){
   .nav-links{position:fixed;top:0;right:-100%;height:100vh;width:min(70%,260px);background:var(--white);flex-direction:column;justify-content:center;padding:2rem;gap:1.75rem;transition:right .3s;border-left:1px solid var(--border);z-index:999;}
   .nav-links.active{right:0;}.menu-toggle{display:block;}
+  .interests-grid{grid-template-columns:1fr;}
+  .pub-card{grid-template-columns:auto 1fr;}
+  .pub-badges{flex-direction:row;flex-wrap:wrap;justify-content:flex-start;grid-column:1/-1;}
+  .scholar-cta{flex-direction:column;}
 }
 @media(max-width:480px){.main{padding:2.5rem 1rem 4rem;}}
 </style>
@@ -96,8 +98,8 @@ footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:v
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html">Home</a></li>
       <li><a href="about_me.html">About</a></li>
-      <li><a href="research.html">Research</a></li>
-      <li><a href="exp.html" class="active">Experience</a></li>
+      <li><a href="research.html" class="active">Research</a></li>
+      <li><a href="exp.html">Experience</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
@@ -105,124 +107,130 @@ footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:v
 </nav>
 
 <section class="page-hero">
-  <div class="page-label">Career &amp; Education</div>
-  <h1 class="page-title">Professional Journey</h1>
-  <p class="page-subtitle">A path built through academic excellence, research, and a passion for teaching and innovation.</p>
+  <div class="page-label">Scholar Profile</div>
+  <h1 class="page-title">Research &amp; Innovation</h1>
+  <p class="page-subtitle">Advancing innovative solutions and impactful research across wireless networks, technology education, and sustainable practices.</p>
+  <div class="stats-row">
+    <div class="stat-item"><div class="stat-num">4+</div><div class="stat-lbl">Publications</div></div>
+    <div class="stat-item"><div class="stat-num">7+</div><div class="stat-lbl">Citations</div></div>
+    <div class="stat-item"><div class="stat-num">PhD</div><div class="stat-lbl">In Progress</div></div>
+  </div>
 </section>
 
 <div class="main">
-  <div class="two-col">
-
-    <!-- Left: Skills + Work -->
-    <div>
-      <div class="section-heading"><h2>Skills</h2><div class="line"></div></div>
-      <div class="skill-list">
-        <div class="skill-item">
-          <div class="skill-header"><span class="skill-name">LAMP &amp; MERN Stack</span><span class="skill-pct">90%</span></div>
-          <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-header"><span class="skill-name">C, C++, Java</span><span class="skill-pct">80%</span></div>
-          <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-header"><span class="skill-name">Adobe Illustrator</span><span class="skill-pct">75%</span></div>
-          <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-header"><span class="skill-name">Media &amp; Content</span><span class="skill-pct">50%</span></div>
-          <div class="skill-bar"><div class="skill-fill" style="width:50%"></div></div>
-        </div>
-      </div>
-
-      <div class="section-heading"><h2>Languages</h2><div class="line"></div></div>
-      <div class="lang-list">
-        <div class="lang-item"><span class="lang-name"><i class="fas fa-language" style="color:var(--accent);margin-right:.5rem"></i>English</span><span class="lang-badge">Proficient</span></div>
-        <div class="lang-item"><span class="lang-name"><i class="fas fa-language" style="color:var(--accent);margin-right:.5rem"></i>Tamil</span><span class="lang-badge">Native</span></div>
-      </div>
+  <div class="section-heading"><h2>Research Interests</h2><div class="line"></div></div>
+  <div class="interests-grid">
+    <div class="interest-card">
+      <div class="int-icon"><i class="fas fa-wifi"></i></div>
+      <h3>Wireless Sensor Networks</h3>
+      <p>Network protocols, communication efficiency, and challenges in underwater and terrestrial environments.</p>
     </div>
-
-    <!-- Right: Work Experience -->
-    <div>
-      <div class="section-heading"><h2>Work Experience</h2><div class="line"></div></div>
-      <div class="timeline">
-
-        <div class="timeline-item current">
-          <div class="tl-card">
-            <div class="tl-header">
-              <div class="tl-title">Assistant Professor</div>
-              <span class="tl-badge badge-current">Current</span>
-            </div>
-            <div class="tl-org">AI&DS, M. Kumarasamy College of Engineering</div>
-            <div class="tl-period"><i class="fas fa-calendar-alt" style="margin-right:.35rem;font-size:.7rem"></i>Oct 2021 – Present</div>
-            <div class="tl-desc">Teaching core engineering subjects, mentoring students, guiding research projects, and contributing to academic and professional development.</div>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="tl-card">
-            <div class="tl-header">
-              <div class="tl-title">Project Associate</div>
-              <span class="tl-badge badge-past">Past</span>
-            </div>
-            <div class="tl-org">SRM Institute of Science &amp; Technology</div>
-            <div class="tl-period"><i class="fas fa-calendar-alt" style="margin-right:.35rem;font-size:.7rem"></i>May 2019 – Oct 2021</div>
-            <div class="tl-desc">Contributed to software development initiatives and guided students in mastering C, C++, Java, Python, and Data Structures.</div>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="tl-card">
-            <div class="tl-header">
-              <div class="tl-title">Project Associate</div>
-              <span class="tl-badge badge-past">Past</span>
-            </div>
-            <div class="tl-org">IIT Madras</div>
-            <div class="tl-period"><i class="fas fa-calendar-alt" style="margin-right:.35rem;font-size:.7rem"></i>Feb 2013 – Jul 2016</div>
-            <div class="tl-desc">Participated in cutting-edge R&D projects, collaborated with academic and industry experts, and assisted in delivering innovative solutions across various domains.</div>
-          </div>
-        </div>
-
-      </div>
+    <div class="interest-card">
+      <div class="int-icon"><i class="fas fa-shield-halved"></i></div>
+      <h3>Network Security</h3>
+      <p>MANET routing protocols and security measures against various network attacks including black hole attacks.</p>
+    </div>
+    <div class="interest-card">
+      <div class="int-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+      <h3>Educational Technology</h3>
+      <p>Smart classroom management systems and innovative teaching methodologies for modern engineering education.</p>
     </div>
   </div>
 
-  <!-- Education full-width -->
-  <div style="margin-top:3rem;">
-    <div class="section-heading"><h2>Education</h2><div class="line"></div></div>
-    <div class="edu-list">
+  <div class="section-heading"><h2>Research Publications</h2><div class="line"></div></div>
+  <div class="pub-list">
 
-      <div class="edu-card">
-        <div class="edu-icon"><i class="fas fa-flask"></i></div>
-        <div>
-          <div class="edu-degree">PhD — Wireless Sensor Networks</div>
-          <div class="edu-inst">Anna University</div>
-          <div class="edu-period">Since 2022 &nbsp;·&nbsp; In Progress</div>
-          <div class="edu-desc">Specialising in wireless sensor networks, focusing on innovative solutions for network protocols, communication efficiency, and challenges in underwater and terrestrial sensor network environments.</div>
+    <div class="pub-card">
+      <div class="pub-num">1</div>
+      <div class="pub-body">
+        <div class="pub-title">Performance Evaluation of MANET Routing Protocol Under Black Hole Attack Using OPNET Simulator</div>
+        <div class="pub-authors"><span class="me">M. Jaganath</span>, R. Vikram</div>
+        <div class="pub-meta">
+          <span class="pub-journal">International Journal of Innovative Technology and Exploring Engineering (IJITEE)</span>
+          <span class="pub-year">2019</span>
+        </div>
+        <div class="pub-meta"><span style="font-size:.75rem;color:var(--text4)">Vol. 8, Issue 7, pp. 398–402</span></div>
+        <div class="pub-tags">
+          <span class="pub-tag">MANET</span><span class="pub-tag">Network Security</span><span class="pub-tag">OPNET</span><span class="pub-tag">Black Hole Attack</span>
         </div>
       </div>
-
-      <div class="edu-card">
-        <div class="edu-icon"><i class="fas fa-user-graduate"></i></div>
-        <div>
-          <div class="edu-degree">Master of Engineering (PG)</div>
-          <div class="edu-inst">M. Kumarasamy College of Engineering</div>
-          <div class="edu-period">2017 – 2019</div>
-          <div class="edu-desc">Completed postgraduate studies with a focus on advanced engineering concepts and research methodologies.</div>
-        </div>
+      <div class="pub-badges">
+        <div class="badge-cited"><i class="fas fa-quote-right"></i> 7 Citations</div>
+        <a href="https://scholar.google.com/citations?user=G0EV74IAAAAJ&hl=en" target="_blank" class="btn-scholar-sm"><i class="fas fa-external-link-alt"></i> Scholar</a>
       </div>
-
-      <div class="edu-card">
-        <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
-        <div>
-          <div class="edu-degree">Bachelor of Engineering (UG)</div>
-          <div class="edu-inst">Kurinji College of Engineering</div>
-          <div class="edu-period">2007 – 2011</div>
-          <div class="edu-desc">Graduated with a Bachelor's degree in Engineering, building a strong foundation in core engineering principles.</div>
-        </div>
-      </div>
-
     </div>
+
+    <div class="pub-card">
+      <div class="pub-num">2</div>
+      <div class="pub-body">
+        <div class="pub-title">A Comprehensive Study About Various MANET Routing Protocols</div>
+        <div class="pub-authors"><span class="me">M. Jaganath</span>, Mr. R. Vikram</div>
+        <div class="pub-meta">
+          <span class="pub-journal">Intelligent Computing Research Studies in Life Science</span>
+          <span class="pub-year">2019</span>
+        </div>
+        <div class="pub-meta"><span style="font-size:.75rem;color:var(--text4)">pp. 113–118</span></div>
+        <div class="pub-tags">
+          <span class="pub-tag">MANET</span><span class="pub-tag">Routing Protocols</span><span class="pub-tag">Survey</span>
+        </div>
+      </div>
+      <div class="pub-badges">
+        <a href="https://scholar.google.com/citations?user=G0EV74IAAAAJ&hl=en" target="_blank" class="btn-scholar-sm"><i class="fas fa-external-link-alt"></i> Scholar</a>
+      </div>
+    </div>
+
+    <div class="pub-card">
+      <div class="pub-num">3</div>
+      <div class="pub-body">
+        <div class="pub-title">An Exhaustive Consideration of Wired and Wireless Network Simulators</div>
+        <div class="pub-authors"><span class="me">M. Jaganath</span> et al.</div>
+        <div class="pub-meta">
+          <span class="pub-journal">International Journal of Recent Technology and Engineering (IJRTE)</span>
+          <span class="pub-year">2019</span>
+        </div>
+        <div class="pub-meta"><span style="font-size:.75rem;color:var(--text4)">Vol. 8, Issue 2S4</span></div>
+        <div class="pub-tags">
+          <span class="pub-tag">Network Simulators</span><span class="pub-tag">Wired Networks</span><span class="pub-tag">Wireless Networks</span>
+        </div>
+      </div>
+      <div class="pub-badges">
+        <a href="https://scholar.google.com/citations?user=G0EV74IAAAAJ&hl=en" target="_blank" class="btn-scholar-sm"><i class="fas fa-external-link-alt"></i> Scholar</a>
+      </div>
+    </div>
+
+    <div class="pub-card">
+      <div class="pub-num">4</div>
+      <div class="pub-body">
+        <div class="pub-title">EDUSYNC – Smart Classroom Management System</div>
+        <div class="pub-authors"><span class="me">M. Jaganath</span>, Nandhana, Dharshini, Monesha</div>
+        <div class="pub-meta">
+          <span class="pub-journal">International Research Journal on Advanced Engineering Hub (IRJAEH)</span>
+          <span class="pub-year">2024</span>
+        </div>
+        <div class="pub-meta"><span style="font-size:.75rem;color:var(--text4)">Vol. 2, Issue 12, pp. 2703–2706</span></div>
+        <div class="pub-tags">
+          <span class="pub-tag">EdTech</span><span class="pub-tag">Smart Classroom</span><span class="pub-tag">IoT</span>
+        </div>
+      </div>
+      <div class="pub-badges">
+        <div class="badge-new"><i class="fas fa-star"></i> 2024</div>
+        <a href="https://scholar.google.com/citations?user=G0EV74IAAAAJ&hl=en" target="_blank" class="btn-scholar-sm"><i class="fas fa-external-link-alt"></i> Scholar</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="scholar-cta">
+    <div class="cta-left">
+      <div class="cta-icon"><i class="fas fa-graduation-cap"></i></div>
+      <div>
+        <h3>View Full Profile on Google Scholar</h3>
+        <p>All publications, citation metrics, and h-index available on my Scholar profile.</p>
+      </div>
+    </div>
+    <a href="https://scholar.google.com/citations?user=G0EV74IAAAAJ&hl=en" target="_blank" class="btn-scholar-main">
+      <i class="fas fa-external-link-alt"></i> Google Scholar Profile
+    </a>
   </div>
 </div>
 
