@@ -1,706 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jaganath M - Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <style>
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #0a0a0a;
-            color: #fff;
-            overflow-x: hidden;
-            min-height: 100vh;
-        }
-
-        /* ═══════════════════════════════
-           NAVIGATION
-        ═══════════════════════════════ */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 1.25rem 0;
-            background: rgba(10, 10, 10, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            transition: padding 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
-        }
-
-        nav.scrolled {
-            padding: 0.875rem 0;
-            background: rgba(10, 10, 10, 0.97);
-            box-shadow: 0 4px 30px rgba(0,0,0,0.4);
-        }
-
-        .nav-container {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.4rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.02em;
-            flex-shrink: 0;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.25rem;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: rgba(255,255,255,0.85);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            position: relative;
-            transition: color 0.3s ease;
-            letter-spacing: 0.01em;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            border-radius: 2px;
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover { color: #667eea; }
-        .nav-links a:hover::after { width: 100%; }
-
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 1.4rem;
-            cursor: pointer;
-            padding: 0.25rem;
-            line-height: 1;
-            z-index: 1001;
-        }
-
-        /* ═══════════════════════════════
-           HERO SECTION
-        ═══════════════════════════════ */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Layered CSS background — no external images, no flash */
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(ellipse 90% 70% at 75% 35%, rgba(102,126,234,0.17) 0%, transparent 60%),
-                radial-gradient(ellipse 55% 55% at 15% 75%, rgba(118,75,162,0.14) 0%, transparent 55%),
-                radial-gradient(ellipse 40% 40% at 50% 50%, rgba(240,147,251,0.05) 0%, transparent 60%),
-                linear-gradient(160deg, #0a0a0a 0%, #121228 45%, #0f1a35 100%);
-            pointer-events: none;
-        }
-
-        /* Subtle animated orb */
-        .hero-orb {
-            position: absolute;
-            width: 700px;
-            height: 700px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(102,126,234,0.07) 0%, transparent 65%);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: orbPulse 9s ease-in-out infinite;
-            pointer-events: none;
-        }
-
-        @keyframes orbPulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1);   opacity: 0.5; }
-            50%       { transform: translate(-50%, -50%) scale(1.25); opacity: 1;   }
-        }
-
-        /* ── MAIN GRID ── */
-        .hero-container {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 7rem 2rem 4rem; /* top = navbar height + breathing room */
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: center;
-        }
-
-        /* ── LEFT: CONTENT ── */
-        .hero-content {
-            animation: slideInLeft 0.85s cubic-bezier(0.22,1,0.36,1) 0.15s both;
-        }
-
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-45px); }
-            to   { opacity: 1; transform: translateX(0); }
-        }
-
-        .hero-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.45rem 1.1rem;
-            background: rgba(102,126,234,0.1);
-            border: 1px solid rgba(102,126,234,0.3);
-            border-radius: 50px;
-            color: #8b9cf7;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.07em;
-            text-transform: uppercase;
-            margin-bottom: 1.4rem;
-        }
-
-        .hero-label::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #667eea;
-            animation: blink 1.8s ease-in-out infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50%       { opacity: 0.3; }
-        }
-
-        .hero-name {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.4rem, 4vw, 3.8rem);
-            line-height: 1.08;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #ffffff 30%, #a78bfa 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1rem, 1.5vw, 1.35rem);
-            color: #818cf8;
-            font-weight: 600;
-            margin-bottom: 1.25rem;
-            letter-spacing: 0.02em;
-        }
-
-        .hero-description {
-            font-size: clamp(0.9rem, 1.1vw, 1.05rem);
-            line-height: 1.85;
-            color: rgba(255,255,255,0.62);
-            margin-bottom: 2.25rem;
-            max-width: 540px;
-        }
-
-        /* Buttons */
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-bottom: 2.25rem;
-        }
-
-        .btn {
-            padding: 0.85rem 2.1rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #fff;
-            box-shadow: 0 8px 25px rgba(102,126,234,0.35);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 14px 35px rgba(102,126,234,0.5);
-        }
-
-        .btn-secondary {
-            background: rgba(255,255,255,0.05);
-            color: #fff;
-            border: 1.5px solid rgba(255,255,255,0.18);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: rgba(255,255,255,0.35);
-            transform: translateY(-3px);
-        }
-
-        /* Social links */
-        .social-links {
-            display: flex;
-            gap: 0.75rem;
-        }
-
-        .social-links a {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-color: transparent;
-            color: #fff;
-            transform: translateY(-3px);
-        }
-
-        /* ── RIGHT: IMAGE ── */
-        .hero-image {
-            animation: slideInRight 0.85s cubic-bezier(0.22,1,0.36,1) 0.15s both;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(45px); }
-            to   { opacity: 1; transform: translateX(0); }
-        }
-
-        .image-container {
-            position: relative;
-            width: 100%;
-            max-width: 420px;
-        }
-
-        /* Gradient border via padding trick — works in all browsers */
-        .image-wrapper {
-            position: relative;
-            border-radius: 28px;
-            padding: 3px;
-            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb, #667eea);
-            background-size: 300% 300%;
-            animation: borderShift 5s linear infinite;
-            box-shadow:
-                0 25px 70px rgba(0,0,0,0.55),
-                0 0 50px rgba(102,126,234,0.18);
-        }
-
-        @keyframes borderShift {
-            0%   { background-position: 0% 50%; }
-            50%  { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .image-inner {
-            border-radius: 25px;
-            overflow: hidden;
-            background: #16213e;
-            line-height: 0;
-            /* Reserve space before image loads */
-            min-height: 360px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .profile-image {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 25px;
-            object-fit: cover;
-            object-position: top center;
-        }
-
-        /* Placeholder icon shown until image loads */
-        .image-placeholder {
-            position: absolute;
-            inset: 3px;
-            border-radius: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #16213e, #1a1a2e);
-            z-index: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .image-placeholder i {
-            font-size: 5rem;
-            color: rgba(102,126,234,0.25);
-        }
-
-        .profile-image.loaded ~ .image-placeholder,
-        .profile-image:not([src=""]) {
-            /* Once image shows, placeholder fades */
-        }
-
-        /* Floating info cards */
-        .floating-elements {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-        }
-
-        .floating-card {
-            position: absolute;
-            background: rgba(12, 12, 30, 0.82);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(102,126,234,0.22);
-            border-radius: 14px;
-            padding: 0.8rem 1.2rem;
-            pointer-events: none;
-        }
-
-        .card-1 {
-            top: 6%;
-            right: -6%;
-            animation: floatUp 3.8s ease-in-out infinite;
-        }
-
-        .card-2 {
-            bottom: 10%;
-            left: -6%;
-            animation: floatUp 3.8s ease-in-out 1.4s infinite;
-        }
-
-        @keyframes floatUp {
-            0%, 100% { transform: translateY(0px);   }
-            50%       { transform: translateY(-12px); }
-        }
-
-        .floating-card i {
-            font-size: 1.3rem;
-            color: #667eea;
-            display: block;
-            margin-bottom: 0.35rem;
-        }
-
-        .floating-card span {
-            font-size: 0.82rem;
-            font-weight: 600;
-            white-space: nowrap;
-            color: rgba(255,255,255,0.9);
-        }
-
-        /* Scroll indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.35rem;
-            z-index: 3;
-            animation: indicatorBounce 2.2s ease-in-out infinite;
-        }
-
-        @keyframes indicatorBounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50%       { transform: translateX(-50%) translateY(-8px); }
-        }
-
-        .scroll-indicator span {
-            font-size: 0.72rem;
-            color: rgba(255,255,255,0.38);
-            text-transform: uppercase;
-            letter-spacing: 0.14em;
-        }
-
-        .scroll-indicator i {
-            color: #667eea;
-            font-size: 1.1rem;
-        }
-
-        /* ═══════════════════════════════
-           RESPONSIVE BREAKPOINTS
-        ═══════════════════════════════ */
-
-        /* Tablet landscape: tighten gap */
-        @media (max-width: 1100px) {
-            .hero-container {
-                gap: 3.5rem;
-                padding-top: 6.5rem;
-            }
-
-            .image-container { max-width: 380px; }
-            .card-1 { right: 0; top: 2%; }
-            .card-2 { left: 0; bottom: 6%; }
-        }
-
-        /* Tablet portrait: stack layout */
-        @media (max-width: 900px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-                padding-top: 6rem;
-                padding-bottom: 5rem;
-                text-align: center;
-            }
-
-            /* Image first, then text */
-            .hero-image   { order: 1; }
-            .hero-content { order: 2; }
-
-            .hero-description {
-                max-width: 100%;
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .hero-label,
-            .hero-buttons,
-            .social-links {
-                justify-content: center;
-            }
-
-            .image-container {
-                max-width: 320px;
-                margin: 0 auto;
-            }
-
-            .image-inner { min-height: 280px; }
-
-            .card-1 { right: -2%; top: 4%; }
-            .card-2 { left: -2%; bottom: 6%; }
-        }
-
-        /* Mobile large */
-        @media (max-width: 768px) {
-            /* Slide-in mobile nav */
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                height: 100vh;
-                width: min(72%, 280px);
-                background: rgba(8, 8, 20, 0.98);
-                flex-direction: column;
-                justify-content: center;
-                padding: 2rem;
-                gap: 2rem;
-                transition: right 0.32s ease;
-                border-left: 1px solid rgba(102,126,234,0.15);
-                z-index: 999;
-            }
-
-            .nav-links.active { right: 0; }
-            .nav-links a { font-size: 1.05rem; }
-
-            .menu-toggle { display: block; }
-
-            .hero-container { padding-left: 1.25rem; padding-right: 1.25rem; }
-
-            .floating-card { display: none; }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn { width: 100%; max-width: 300px; justify-content: center; }
-        }
-
-        /* Mobile small */
-        @media (max-width: 480px) {
-            .nav-container { padding: 0 1.25rem; }
-            .hero-container { padding-left: 1rem; padding-right: 1rem; }
-            .image-container { max-width: 260px; }
-            .image-inner { min-height: 220px; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jaganath M - Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+:root{
+  --accent:#4f46e5;--accent2:#7c3aed;--accent-light:#ede9fe;--accent-mid:#c4b5fd;
+  --bg:#f8fafc;--bg2:#f1f5f9;--bg3:#e9f0fa;--white:#fff;
+  --border:#e2e8f0;--border2:#cbd5e1;
+  --text:#0f172a;--text2:#334155;--text3:#64748b;--text4:#94a3b8;
+  --shadow:0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md:0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg:0 10px 30px rgba(0,0,0,0.1);
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+/* NAV */
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:1rem 0;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:box-shadow .3s,padding .3s;}
+nav.scrolled{box-shadow:var(--shadow-md);}
+.nav-container{max-width:1280px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;}
+.logo{font-size:1.35rem;font-weight:700;color:var(--accent);letter-spacing:-.02em;}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
+.nav-links a{color:var(--text3);text-decoration:none;font-weight:500;font-size:.88rem;position:relative;transition:color .25s;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:2px;background:var(--accent);border-radius:2px;transition:width .25s;}
+.nav-links a:hover,.nav-links a.active{color:var(--accent);}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+.menu-toggle{display:none;background:none;border:none;color:var(--text2);font-size:1.3rem;cursor:pointer;}
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;background:linear-gradient(135deg,var(--white) 0%,var(--bg2) 55%,var(--bg3) 100%);position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 70% 40%,rgba(79,70,229,0.06) 0%,transparent 65%);pointer-events:none;}
+.hero-container{max-width:1280px;margin:0 auto;padding:6rem 2rem 3rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;position:relative;z-index:1;width:100%;}
+.hero-content{animation:fadeLeft .8s cubic-bezier(.22,1,.36,1) .1s both;}
+.hero-image{animation:fadeRight .8s cubic-bezier(.22,1,.36,1) .1s both;display:flex;justify-content:center;}
+@keyframes fadeLeft{from{opacity:0;transform:translateX(-35px)}to{opacity:1;transform:none}}
+@keyframes fadeRight{from{opacity:0;transform:translateX(35px)}to{opacity:1;transform:none}}
+.hero-label{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1.1rem;background:var(--accent-light);border:1px solid var(--accent-mid);border-radius:50px;color:#5b21b6;font-size:.75rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;margin-bottom:1.3rem;}
+.hero-label::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);animation:dot 1.8s ease-in-out infinite;}
+@keyframes dot{0%,100%{opacity:1}50%{opacity:.25}}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4vw,3.8rem);line-height:1.08;color:var(--text);margin-bottom:.9rem;}
+.hero-subtitle{font-size:clamp(1rem,1.5vw,1.2rem);color:var(--accent);font-weight:600;margin-bottom:1.1rem;}
+.hero-desc{font-size:1rem;line-height:1.85;color:var(--text3);margin-bottom:2rem;max-width:520px;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem;}
+.btn{padding:.8rem 1.75rem;border-radius:50px;font-weight:600;font-size:.9rem;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:all .25s;border:none;cursor:pointer;}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 4px 14px rgba(79,70,229,0.28);}
+.btn-primary:hover{background:#4338ca;transform:translateY(-2px);box-shadow:0 8px 20px rgba(79,70,229,0.35);}
+.btn-outline{background:var(--white);color:var(--text2);border:1.5px solid var(--border2);}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);}
+.social-links{display:flex;gap:.65rem;}
+.social-links a{width:40px;height:40px;border-radius:50%;background:var(--white);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text3);text-decoration:none;font-size:.9rem;transition:all .25s;}
+.social-links a:hover{background:var(--accent);border-color:var(--accent);color:#fff;transform:translateY(-2px);}
+/* PROFILE IMAGE */
+.image-container{position:relative;max-width:420px;width:100%;}
+.image-wrapper{border-radius:24px;padding:3px;background:linear-gradient(135deg,var(--accent),var(--accent2),#a78bfa,var(--accent));background-size:300% 300%;animation:borderShift 5s linear infinite;box-shadow:var(--shadow-lg);}
+@keyframes borderShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.image-inner{border-radius:21px;overflow:hidden;background:var(--bg3);min-height:340px;display:flex;align-items:center;justify-content:center;}
+.profile-image{width:100%;height:auto;display:block;border-radius:21px;object-fit:cover;object-position:top center;}
+.floating-elements{position:absolute;inset:0;pointer-events:none;}
+.floating-card{position:absolute;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:.7rem 1.1rem;box-shadow:var(--shadow-md);}
+.card-1{top:6%;right:-8%;animation:floatUp 3.5s ease-in-out infinite;}
+.card-2{bottom:10%;left:-8%;animation:floatUp 3.5s ease-in-out 1.3s infinite;}
+@keyframes floatUp{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.floating-card i{font-size:1.1rem;color:var(--accent);display:block;margin-bottom:.3rem;}
+.floating-card span{font-size:.78rem;font-weight:600;color:var(--text2);white-space:nowrap;}
+/* SCROLL */
+.scroll-indicator{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.3rem;animation:bounce 2s ease-in-out infinite;z-index:2;}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-7px)}}
+.scroll-indicator span{font-size:.7rem;color:var(--text4);text-transform:uppercase;letter-spacing:.12em;}
+.scroll-indicator i{color:var(--accent);font-size:1rem;}
+footer{text-align:center;padding:2rem 1rem;border-top:1px solid var(--border);color:var(--text4);font-size:.8rem;background:var(--white);}
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-container{grid-template-columns:1fr;gap:2.5rem;padding-top:6rem;text-align:center;}
+  .hero-image{order:1}.hero-content{order:2}
+  .hero-btns,.social-links{justify-content:center;}
+  .hero-desc{max-width:100%;margin-left:auto;margin-right:auto;}
+  .image-container{max-width:300px;margin:0 auto;}
+  .card-1{right:0}.card-2{left:0}
+}
+@media(max-width:768px){
+  .nav-links{position:fixed;top:0;right:-100%;height:100vh;width:min(70%,260px);background:var(--white);flex-direction:column;justify-content:center;padding:2rem;gap:1.75rem;transition:right .3s;border-left:1px solid var(--border);z-index:999;}
+  .nav-links.active{right:0;}
+  .menu-toggle{display:block;}
+  .floating-card{display:none;}
+}
+@media(max-width:480px){
+  .hero-btns{flex-direction:column;align-items:center;}
+  .btn{width:100%;max-width:280px;justify-content:center;}
+}
+</style>
 </head>
 <body>
+<nav id="navbar">
+  <div class="nav-container">
+    <div class="logo">Jaganath M</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about_me.html">About</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="exp.html">Experience</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
 
-    <!-- ══ NAVIGATION ══ -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <div class="logo">Jaganath M</div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
-                <li><a href="about_me.html">About</a></li>
-                <li><a href="research.html">Research</a></li>
-                <li><a href="exp.html">Experience</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
+<section class="hero" id="home">
+  <div class="hero-container">
+    <div class="hero-content">
+      <div class="hero-label">Assistant Professor</div>
+      <h1>Jaganath M</h1>
+      <div class="hero-subtitle">Educator &nbsp;·&nbsp; Researcher &nbsp;·&nbsp; Innovator</div>
+      <p class="hero-desc">Hello! I am Jaganath M, an Assistant Professor at M.Kumarasamy College of Engineering. My professional journey is rooted in a commitment to advancing knowledge and technical skills in Java programming, Object-Oriented Programming, and Database Management Systems.</p>
+      <div class="hero-btns">
+        <a href="research.html" class="btn btn-primary">View Research <i class="fas fa-arrow-right"></i></a>
+        <a href="contact.html" class="btn btn-outline">Get In Touch</a>
+      </div>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/jaganath-m-34b06bb5" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/JaganSiva" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://scholar.google.com/citations?user=G0EV74IAAAAJ&hl=en" target="_blank" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+        <a href="mailto:jaganjgn986@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="image-container">
+        <div class="image-wrapper">
+          <div class="image-inner">
+            <img src="Jagan.jpeg" alt="Jaganath M" class="profile-image" loading="eager" onerror="this.style.display='none'">
+          </div>
         </div>
-    </nav>
-
-    <!-- ══ HERO ══ -->
-    <section class="hero" id="home">
-        <div class="hero-bg"></div>
-        <div class="hero-orb"></div>
-
-        <div class="hero-container">
-
-            <!-- Left: Text content -->
-            <div class="hero-content">
-                <div class="hero-label">Assistant Professor</div>
-
-                <h1 class="hero-name">Jaganath M</h1>
-
-                <div class="hero-subtitle">Educator &nbsp;|&nbsp; Researcher &nbsp;|&nbsp; Innovator</div>
-
-                <p class="hero-description">
-                    Hello! I am Jaganath M, an Assistant Professor at M.Kumarasamy College of Engineering.
-                    My professional journey is rooted in a commitment to advancing knowledge and technical
-                    skills in Java programming, Object-Oriented Programming, and Database Management Systems.
-                    With an academic and industry background that blends hands-on expertise with a theoretical
-                    foundation, I am dedicated to guiding students toward a comprehensive understanding of
-                    computer science and engineering principles.
-                </p>
-
-                <div class="hero-buttons">
-                    <a href="#portfolio" class="btn btn-primary">
-                        View Portfolio <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <a href="contact.html" class="btn btn-secondary">
-                        Get In Touch
-                    </a>
-                </div>
-
-                <div class="social-links">
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="mailto:jagan_xxx@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                </div>
-            </div>
-
-            <!-- Right: Profile image -->
-            <div class="hero-image">
-                <div class="image-container">
-                    <div class="image-wrapper">
-                        <div class="image-inner">
-                            <img
-                                src="Jagan.jpeg"
-                                alt="Jaganath M — Assistant Professor"
-                                class="profile-image"
-                                loading="eager"
-                                decoding="async"
-                                onerror="this.style.opacity='0'"
-                            >
-                        </div>
-                    </div>
-
-                    <div class="floating-elements">
-                        <div class="floating-card card-1">
-                            <i class="fas fa-code"></i>
-                            <span>Programming Expert</span>
-                        </div>
-                        <div class="floating-card card-2">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span>Educator</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div><!-- /.hero-container -->
-
-        <div class="scroll-indicator">
-            <span>Scroll Down</span>
-            <i class="fas fa-chevron-down"></i>
+        <div class="floating-elements">
+          <div class="floating-card card-1"><i class="fas fa-code"></i><span>Java Expert</span></div>
+          <div class="floating-card card-2"><i class="fas fa-graduation-cap"></i><span>Educator</span></div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator"><span>Scroll</span><i class="fas fa-chevron-down"></i></div>
+</section>
 
+<footer>© 2025 M. Jaganath — All rights reserved.</footer>
 
-    <script>
-        /* ── Navbar scroll ── */
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 50);
-        }, { passive: true });
-
-        /* ── Mobile menu ── */
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks   = document.getElementById('navLinks');
-
-        menuToggle.addEventListener('click', () => {
-            const open = navLinks.classList.toggle('active');
-            menuToggle.querySelector('i').className = open ? 'fas fa-times' : 'fas fa-bars';
-        });
-
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                menuToggle.querySelector('i').className = 'fas fa-bars';
-            });
-        });
-
-        /* ── Smooth scroll for hash links ── */
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', e => {
-                const target = document.querySelector(a.getAttribute('href'));
-                if (target) {
-                    e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-    </script>
+<script>
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>50),{passive:true});
+const menuToggle=document.getElementById('menuToggle'),navLinks=document.getElementById('navLinks');
+menuToggle.addEventListener('click',()=>{const o=navLinks.classList.toggle('active');menuToggle.querySelector('i').className=o?'fas fa-times':'fas fa-bars';});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('active');menuToggle.querySelector('i').className='fas fa-bars';}));
+</script>
 </body>
 </html>
