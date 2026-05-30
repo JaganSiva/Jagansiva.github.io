@@ -1,668 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - Jaganath M</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #0a0a0a;
-            color: #fff;
-            overflow-x: hidden;
-        }
-
-        /* Navigation - Same as home page */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 1rem 0;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: #667eea;
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        /* Page Header */
-        .page-header {
-            padding: 10rem 0 6rem;
-            text-align: center;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .page-header::before {
-            content: '';
-            position: absolute;
-            width: 150%;
-            height: 150%;
-            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
-            animation: pulse 8s ease-in-out infinite;
-        }
-
-        .page-header-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .page-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #fff 0%, #667eea 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .page-subtitle {
-            font-size: 1.25rem;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.8;
-        }
-
-        /* Main Content */
-        .content-wrapper {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        .section {
-            margin-bottom: 6rem;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .section:nth-child(2) { animation-delay: 0.1s; }
-        .section:nth-child(3) { animation-delay: 0.2s; }
-        .section:nth-child(4) { animation-delay: 0.3s; }
-        .section:nth-child(5) { animation-delay: 0.4s; }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 2px;
-        }
-
-        .section-content {
-            margin-top: 2.5rem;
-        }
-
-        .text-content {
-            font-size: 1.1rem;
-            line-height: 1.9;
-            color: rgba(255, 255, 255, 0.8);
-            max-width: 900px;
-        }
-
-        /* Experience Cards */
-        .experience-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2.5rem;
-        }
-
-        .experience-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .experience-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .experience-card:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(102, 126, 234, 0.3);
-            transform: translateY(-5px);
-        }
-
-        .experience-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .experience-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: #667eea;
-        }
-
-        .experience-company {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 1rem;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
-            overflow: hidden;
-            margin: 1rem 0;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 3px;
-            animation: progressAnimation 1.5s ease-out;
-        }
-
-        @keyframes progressAnimation {
-            from { width: 0; }
-        }
-
-        /* Expertise Grid */
-        .expertise-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-top: 2.5rem;
-        }
-
-        .expertise-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 2.5rem;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .expertise-card:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(102, 126, 234, 0.3);
-            transform: translateY(-5px);
-        }
-
-        .expertise-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1.5rem;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: #667eea;
-        }
-
-        .expertise-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .expertise-description {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* Philosophy Section */
-        .philosophy-content {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 3rem;
-            margin-top: 2.5rem;
-        }
-
-        /* Connect Section */
-        .connect-section {
-            text-align: center;
-            padding: 4rem 2rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            margin: 2.5rem 0;
-        }
-
-        .social-links a {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 1.5rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-color: transparent;
-            transform: translateY(-5px) rotate(360deg);
-        }
-
-        .action-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #fff;
-            border: none;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: #fff;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.4);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .page-title {
-                font-size: 2.5rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .expertise-grid,
-            .experience-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .philosophy-content {
-                padding: 2rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .page-header {
-                padding: 8rem 0 4rem;
-            }
-
-            .page-title {
-                font-size: 2rem;
-            }
-
-            .section {
-                margin-bottom: 4rem;
-            }
-
-            .action-buttons {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Me - Jaganath M</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+:root{
+  --accent:#4f46e5;--accent2:#7c3aed;--accent-light:#ede9fe;--accent-mid:#c4b5fd;
+  --bg:#f8fafc;--bg2:#f1f5f9;--bg3:#e9f0fa;--white:#fff;
+  --border:#e2e8f0;--border2:#cbd5e1;
+  --text:#0f172a;--text2:#334155;--text3:#64748b;--text4:#94a3b8;
+  --shadow:0 1px 3px rgba(0,0,0,0.08);--shadow-md:0 4px 12px rgba(0,0,0,0.08);--shadow-lg:0 10px 30px rgba(0,0,0,0.1);
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:1rem 0;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:box-shadow .3s;}
+nav.scrolled{box-shadow:var(--shadow-md);}
+.nav-container{max-width:1280px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;}
+.logo{font-size:1.35rem;font-weight:700;color:var(--accent);letter-spacing:-.02em;text-decoration:none;}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
+.nav-links a{color:var(--text3);text-decoration:none;font-weight:500;font-size:.88rem;position:relative;transition:color .25s;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:2px;background:var(--accent);border-radius:2px;transition:width .25s;}
+.nav-links a:hover,.nav-links a.active{color:var(--accent);}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+.menu-toggle{display:none;background:none;border:none;color:var(--text2);font-size:1.3rem;cursor:pointer;}
+/* PAGE HERO */
+.page-hero{padding:7rem 2rem 3rem;background:linear-gradient(160deg,var(--white) 0%,var(--bg2) 55%,var(--bg3) 100%);border-bottom:1px solid var(--border);text-align:center;}
+.page-label{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem 1rem;background:var(--accent-light);border:1px solid var(--accent-mid);border-radius:50px;color:#5b21b6;font-size:.75rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;margin-bottom:1.1rem;}
+.page-label::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);animation:dot 1.8s ease-in-out infinite;}
+@keyframes dot{0%,100%{opacity:1}50%{opacity:.25}}
+.page-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);color:var(--text);margin-bottom:.8rem;}
+.page-subtitle{font-size:.97rem;line-height:1.8;color:var(--text3);max-width:560px;margin:0 auto;}
+/* MAIN */
+.main{max-width:1100px;margin:0 auto;padding:3.5rem 2rem 5rem;}
+.two-col{display:grid;grid-template-columns:1fr 2fr;gap:3rem;align-items:start;}
+/* LEFT SIDEBAR */
+.profile-card{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:2rem;box-shadow:var(--shadow);text-align:center;position:sticky;top:5.5rem;}
+.avatar{width:100px;height:100px;border-radius:50%;margin:0 auto 1rem;overflow:hidden;border:3px solid var(--accent-mid);background:var(--bg3);display:flex;align-items:center;justify-content:center;}
+.avatar img{width:100%;height:100%;object-fit:cover;object-position:top;}
+.avatar i{font-size:2.5rem;color:var(--accent-mid);}
+.profile-name{font-size:1.15rem;font-weight:700;color:var(--text);margin-bottom:.25rem;}
+.profile-role{font-size:.82rem;color:var(--text3);margin-bottom:1.25rem;}
+.profile-info{display:flex;flex-direction:column;gap:.6rem;text-align:left;margin-bottom:1.5rem;}
+.info-row{display:flex;align-items:center;gap:.65rem;font-size:.82rem;color:var(--text3);}
+.info-row i{color:var(--accent);width:16px;flex-shrink:0;}
+.info-row a{color:var(--accent);text-decoration:none;}
+.profile-actions{display:flex;flex-direction:column;gap:.6rem;}
+.btn{padding:.75rem 1.5rem;border-radius:50px;font-weight:600;font-size:.85rem;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;transition:all .25s;border:none;cursor:pointer;}
+.btn-primary{background:var(--accent);color:#fff;}
+.btn-primary:hover{background:#4338ca;transform:translateY(-2px);}
+.btn-outline{background:var(--white);color:var(--text2);border:1.5px solid var(--border2);}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);}
+/* RIGHT CONTENT */
+.section-heading{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;}
+.section-heading h2{font-size:1.15rem;font-weight:700;color:var(--text);white-space:nowrap;}
+.section-heading .line{flex:1;height:1px;background:var(--border);}
+.content-section{margin-bottom:2.75rem;}
+.prose{font-size:.95rem;line-height:1.85;color:var(--text3);}
+.prose+.prose{margin-top:1rem;}
+/* EXPERTISE GRID */
+.expertise-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.exp-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.25rem;transition:transform .25s,border-color .25s,box-shadow .25s;}
+.exp-card:hover{transform:translateY(-3px);border-color:var(--accent-mid);box-shadow:var(--shadow-md);}
+.exp-icon{width:38px;height:38px;border-radius:10px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;margin-bottom:.75rem;}
+.exp-icon i{font-size:1rem;color:var(--accent);}
+.exp-card h3{font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:.35rem;}
+.exp-card p{font-size:.8rem;color:var(--text3);line-height:1.6;}
+/* PHILOSOPHY */
+.philosophy-box{background:linear-gradient(135deg,var(--accent-light),var(--bg3));border:1px solid var(--accent-mid);border-radius:16px;padding:1.75rem;}
+.philosophy-box p{font-size:.93rem;line-height:1.9;color:var(--text2);}
+.philosophy-box p+p{margin-top:1rem;}
+/* FOOTER */
+footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--text4);font-size:.8rem;background:var(--white);}
+@media(max-width:900px){.two-col{grid-template-columns:1fr;}.profile-card{position:static;}.expertise-grid{grid-template-columns:1fr;}}
+@media(max-width:768px){
+  .nav-links{position:fixed;top:0;right:-100%;height:100vh;width:min(70%,260px);background:var(--white);flex-direction:column;justify-content:center;padding:2rem;gap:1.75rem;transition:right .3s;border-left:1px solid var(--border);z-index:999;}
+  .nav-links.active{right:0;}.menu-toggle{display:block;}
+}
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo">Jaganath M</div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about_me.html" class="active">About</a></li>
-                <li><a href="research.html">Research</a></li>
-                <li><a href="exp.html">Experience</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+<nav id="navbar">
+  <div class="nav-container">
+    <div class="logo">Jaganath M</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about_me.html" class="active">About</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="exp.html">Experience</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
 
-    <!-- Page Header -->
-    <div class="page-header">
-        <div class="page-header-content">
-            <h1 class="page-title">About Me</h1>
-            <p class="page-subtitle">
-                Dedicated to nurturing future innovators through comprehensive and dynamic teaching, 
-                bridging theory with practical application.
-            </p>
+<section class="page-hero">
+  <div class="page-label">Know Me Better</div>
+  <h1 class="page-title">About Me</h1>
+  <p class="page-subtitle">Dedicated to nurturing future innovators through comprehensive and dynamic teaching, bridging theory with practical application.</p>
+</section>
+
+<div class="main">
+  <div class="two-col">
+
+    <!-- Sidebar -->
+    <div>
+      <div class="profile-card">
+        <div class="avatar">
+          <img src="Jagan.jpeg" alt="Jaganath M" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <i class="fas fa-user" style="display:none"></i>
         </div>
+        <div class="profile-name">Jaganath M</div>
+        <div class="profile-role">Assistant Professor · AI&DS</div>
+        <div class="profile-info">
+          <div class="info-row"><i class="fas fa-building"></i>M.Kumarasamy College of Engineering</div>
+          <div class="info-row"><i class="fas fa-map-marker-alt"></i>Karur, Tamil Nadu</div>
+          <div class="info-row"><i class="fas fa-envelope"></i><a href="mailto:jaganjgn986@gmail.com">jaganjgn986@gmail.com</a></div>
+          <div class="info-row"><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/jaganath-m-34b06bb5" target="_blank">LinkedIn Profile</a></div>
+          <div class="info-row"><i class="fab fa-github"></i><a href="https://github.com/JaganSiva" target="_blank">github.com/JaganSiva</a></div>
+          <div class="info-row"><i class="fas fa-graduation-cap"></i><a href="https://scholar.google.com/citations?user=G0EV74IAAAAJ&hl=en" target="_blank">Google Scholar</a></div>
+        </div>
+        <div class="profile-actions">
+          <a href="#" class="btn btn-primary"><i class="fas fa-download"></i> Download CV</a>
+          <a href="contact.html" class="btn btn-outline"><i class="fas fa-paper-plane"></i> Contact Me</a>
+        </div>
+      </div>
     </div>
 
-    <!-- Main Content -->
-    <div class="content-wrapper">
-        <!-- Educational Background -->
-        <section class="section">
-            <h2 class="section-title">Educational Background</h2>
-            <div class="section-content">
-                <p class="text-content">
-                    I hold an M.E. (Ph.D) in Computer Science from Anna University, where I developed a strong foundation in 
-                    both technical competencies and critical problem-solving. Since entering academia, I have focused on making 
-                    complex technical subjects accessible and applicable, ensuring students gain both knowledge and practical 
-                    insights that will support them in future careers.
-                </p>
-            </div>
-        </section>
+    <!-- Main content -->
+    <div>
+      <div class="content-section">
+        <div class="section-heading"><h2>Educational Background</h2><div class="line"></div></div>
+        <p class="prose">I hold an M.E. (Ph.D) in Computer Science from Anna University, where I developed a strong foundation in both technical competencies and critical problem-solving. Since entering academia, I have focused on making complex technical subjects accessible and applicable, ensuring students gain both knowledge and practical insights that will support them in future careers.</p>
+      </div>
 
-        <!-- Professional Experience -->
-        <section class="section">
-            <h2 class="section-title">Professional Experience</h2>
-            <div class="section-content">
-                <p class="text-content">
-                    My career encompasses diverse roles that have enabled me to refine my teaching methodology and technical 
-                    proficiency. Currently, as an Assistant Professor, I bring my expertise in Java, OOP, and database systems 
-                    to the classroom, designing courses that emphasize practical applications and real-world scenarios.
-                </p>
-                <div class="experience-grid">
-                    <div class="experience-card">
-                        <h3 class="experience-title">Assistant Professor</h3>
-                        <p class="experience-company">M.Kumarasamy College of Engineering</p>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 95%"></div>
-                        </div>
-                    </div>
-                    <div class="experience-card">
-                        <h3 class="experience-title">Project Associate</h3>
-                        <p class="experience-company">SRM University Kattankulathur Campus</p>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    <div class="experience-card">
-                        <h3 class="experience-title">Project Associate</h3>
-                        <p class="experience-company">IIT Madras</p>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 80%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <div class="content-section">
+        <div class="section-heading"><h2>Professional Experience</h2><div class="line"></div></div>
+        <p class="prose">My career encompasses diverse roles that have enabled me to refine my teaching methodology and technical proficiency. Currently, as an Assistant Professor, I bring my expertise in Java, OOP, and database systems to the classroom, designing courses that emphasize practical applications and real-world scenarios.</p>
+      </div>
 
-        <!-- Areas of Expertise -->
-        <section class="section">
-            <h2 class="section-title">Areas of Expertise</h2>
-            <div class="section-content">
-                <div class="expertise-grid">
-                    <div class="expertise-card">
-                        <div class="expertise-icon">
-                            <i class="fab fa-java"></i>
-                        </div>
-                        <h3 class="expertise-title">Java Programming</h3>
-                        <p class="expertise-description">
-                            Expert in Object-Oriented Programming (OOP), multithreading, and GUI development.
-                        </p>
-                    </div>
-                    <div class="expertise-card">
-                        <div class="expertise-icon">
-                            <i class="fas fa-cogs"></i>
-                        </div>
-                        <h3 class="expertise-title">System Design</h3>
-                        <p class="expertise-description">
-                            Specialized in personnel management systems with experience in real-world applications.
-                        </p>
-                    </div>
-                    <div class="expertise-card">
-                        <div class="expertise-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <h3 class="expertise-title">ERP Software Maintenance</h3>
-                        <p class="expertise-description">
-                            Managing and maintaining the ERP software for the institution, ensuring smooth operations and data integrity.
-                        </p>
-                    </div>
-                    <div class="expertise-card">
-                        <div class="expertise-icon">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
-                        <h3 class="expertise-title">MERN & LAMP Stack Development</h3>
-                        <p class="expertise-description">
-                            Skilled in both MERN and LAMP stacks, currently leading a five-member student team on a consultancy project.
-                        </p>
-                    </div>
-                    <div class="expertise-card">
-                        <div class="expertise-icon">
-                            <i class="fas fa-utensils"></i>
-                        </div>
-                        <h3 class="expertise-title">Food Calorie Management</h3>
-                        <p class="expertise-description">
-                            Working on a startup project for food calorie management, under guidance from the Wadhwani Foundation.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <div class="content-section">
+        <div class="section-heading"><h2>Areas of Expertise</h2><div class="line"></div></div>
+        <div class="expertise-grid">
+          <div class="exp-card">
+            <div class="exp-icon"><i class="fab fa-java"></i></div>
+            <h3>Java Programming</h3>
+            <p>Expert in Object-Oriented Programming, multithreading, and GUI development.</p>
+          </div>
+          <div class="exp-card">
+            <div class="exp-icon"><i class="fas fa-sitemap"></i></div>
+            <h3>System Design</h3>
+            <p>Specialised in personnel management systems with real-world application experience.</p>
+          </div>
+          <div class="exp-card">
+            <div class="exp-icon"><i class="fas fa-cogs"></i></div>
+            <h3>ERP Software</h3>
+            <p>Managing and maintaining institutional ERP software, ensuring smooth operations and data integrity.</p>
+          </div>
+          <div class="exp-card">
+            <div class="exp-icon"><i class="fas fa-layer-group"></i></div>
+            <h3>MERN & LAMP Stack</h3>
+            <p>Skilled in both stacks, currently leading a five-member student team on a consultancy project.</p>
+          </div>
+          <div class="exp-card">
+            <div class="exp-icon"><i class="fas fa-apple-alt"></i></div>
+            <h3>Food Calorie Management</h3>
+            <p>Working on a startup project under guidance from the Wadhwani Foundation.</p>
+          </div>
+          <div class="exp-card">
+            <div class="exp-icon"><i class="fas fa-wifi"></i></div>
+            <h3>Wireless Networks</h3>
+            <p>Research focus on sensor networks, MANET protocols, and network security.</p>
+          </div>
+        </div>
+      </div>
 
-        <!-- Teaching Philosophy -->
-        <section class="section">
-            <h2 class="section-title">Teaching Philosophy</h2>
-            <div class="section-content">
-                <div class="philosophy-content">
-                    <p class="text-content" style="margin-bottom: 1.5rem;">
-                        My teaching philosophy is deeply rooted in fostering a collaborative and interactive learning environment 
-                        where students are encouraged to explore, question, and engage deeply with the material. I believe that 
-                        every student possesses unique strengths and potential, and my role as an educator is to help them discover 
-                        and develop these qualities through tailored guidance and hands-on experiences.
-                    </p>
-                    <p class="text-content" style="margin-bottom: 1.5rem;">
-                        In my classroom, I emphasize the importance of critical thinking, creativity, and active participation. 
-                        By integrating project-based learning and real-world applications, I aim to bridge the gap between 
-                        theoretical knowledge and practical skills. This approach not only enhances students' understanding but 
-                        also empowers them to apply their learning confidently in diverse professional and academic contexts.
-                    </p>
-                    <p class="text-content">
-                        Ultimately, my goal is to inspire lifelong learning by equipping students with the skills, mindset, and 
-                        adaptability necessary for success in an ever-evolving world. Through collaborative learning and hands-on 
-                        experiences, I strive to prepare my students not only for academic achievement but also for meaningful 
-                        contributions to society and their chosen fields.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Connect Section -->
-        <section class="section">
-            <div class="connect-section">
-                <h2 class="section-title">Connect With Me</h2>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/public-profile/settings" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="mailto:jagan_xxx@gmail.com" aria-label="Email">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                    <a href="#" aria-label="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="#" aria-label="Twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                </div>
-                <div class="action-buttons">
-                    <a href="#" class="btn btn-primary">
-                        <i class="fas fa-file-download"></i>
-                        Download CV
-                    </a>
-                    <a href="contact.html" class="btn btn-secondary">
-                        <i class="fas fa-paper-plane"></i>
-                        Contact Me
-                    </a>
-                </div>
-            </div>
-        </section>
+      <div class="content-section">
+        <div class="section-heading"><h2>Teaching Philosophy</h2><div class="line"></div></div>
+        <div class="philosophy-box">
+          <p>My teaching philosophy is deeply rooted in fostering a collaborative and interactive learning environment where students are encouraged to explore, question, and engage deeply with the material. I believe that every student possesses unique strengths and potential, and my role as an educator is to help them discover and develop these qualities through tailored guidance and hands-on experiences.</p>
+          <p>In my classroom, I emphasize the importance of critical thinking, creativity, and active participation. By integrating project-based learning and real-world applications, I aim to bridge the gap between theoretical knowledge and practical skills — empowering students to apply their learning confidently in diverse professional and academic contexts.</p>
+          <p>Ultimately, my goal is to inspire lifelong learning by equipping students with the skills, mindset, and adaptability necessary for success in an ever-evolving world.</p>
+        </div>
+      </div>
     </div>
+  </div>
+</div>
 
-    <script>
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.section').forEach(section => {
-            section.style.animationPlayState = 'paused';
-            observer.observe(section);
-        });
-    </script>
+<footer>© 2025 M. Jaganath — All rights reserved.</footer>
+<script>
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>50),{passive:true});
+const menuToggle=document.getElementById('menuToggle'),navLinks=document.getElementById('navLinks');
+menuToggle.addEventListener('click',()=>{const o=navLinks.classList.toggle('active');menuToggle.querySelector('i').className=o?'fas fa-times':'fas fa-bars';});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('active');menuToggle.querySelector('i').className='fas fa-bars';}));
+</script>
 </body>
 </html>
