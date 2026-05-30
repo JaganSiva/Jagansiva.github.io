@@ -1,710 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experience - Jaganath M</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #0a0a0a;
-            color: #fff;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 1rem 0;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: #667eea;
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        /* Page Header */
-        .page-header {
-            padding: 10rem 0 6rem;
-            text-align: center;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .page-header::before {
-            content: '';
-            position: absolute;
-            width: 150%;
-            height: 150%;
-            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
-            animation: pulse 8s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.1); opacity: 0.8; }
-        }
-
-        .page-header-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .page-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #fff 0%, #667eea 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Main Content */
-        .content-wrapper {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-            display: grid;
-            grid-template-columns: 350px 1fr;
-            gap: 3rem;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            position: sticky;
-            top: 100px;
-            height: fit-content;
-        }
-
-        .profile-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .profile-name {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, #fff 0%, #667eea 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .profile-title {
-            color: #667eea;
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-info {
-            text-align: left;
-            margin-top: 1.5rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .contact-item i {
-            color: #667eea;
-            width: 20px;
-        }
-
-        .divider {
-            height: 1px;
-            background: rgba(255, 255, 255, 0.1);
-            margin: 1.5rem 0;
-        }
-
-        .section-title-sidebar {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: #667eea;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        /* Skills */
-        .skill-item {
-            margin-bottom: 1.5rem;
-        }
-
-        .skill-name {
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .skill-bar {
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .skill-fill {
-            height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 4px;
-            transition: width 1.5s ease;
-        }
-
-        .skill-percentage {
-            position: absolute;
-            right: 8px;
-            top: -2px;
-            font-size: 0.75rem;
-            color: #667eea;
-            font-weight: 600;
-        }
-
-        /* Language Progress */
-        .language-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .language-name {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .language-dots {
-            display: flex;
-            gap: 0.3rem;
-        }
-
-        .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .dot.filled {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        /* Main Content Area */
-        .main-content {
-            animation: fadeInUp 0.8s ease;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .section {
-            margin-bottom: 4rem;
-        }
-
-        .section-title-main {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 2.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .section-title-main i {
-            color: #667eea;
-        }
-
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding-left: 3rem;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(180deg, #667eea 0%, rgba(102, 126, 234, 0.1) 100%);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 3rem;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .timeline-item:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(102, 126, 234, 0.3);
-            transform: translateX(5px);
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -3.4rem;
-            top: 2rem;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #667eea;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
-        }
-
-        .timeline-badge {
-            display: inline-block;
-            padding: 0.4rem 1rem;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
-            border: 1px solid rgba(102, 126, 234, 0.3);
-            border-radius: 20px;
-            color: #667eea;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-job {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-org {
-            font-size: 1.1rem;
-            color: #667eea;
-            margin-bottom: 0.75rem;
-        }
-
-        .timeline-dates {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.5);
-            margin-bottom: 1.25rem;
-            font-style: italic;
-        }
-
-        .timeline-desc {
-            font-size: 1rem;
-            line-height: 1.8;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* Education Cards */
-        .education-grid {
-            display: grid;
-            gap: 2rem;
-        }
-
-        .education-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .education-card:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(102, 126, 234, 0.3);
-            transform: translateY(-5px);
-        }
-
-        .education-degree {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 0.5rem;
-        }
-
-        .education-school {
-            font-size: 1.1rem;
-            color: #667eea;
-            margin-bottom: 0.75rem;
-        }
-
-        .education-dates {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.5);
-            margin-bottom: 1rem;
-            font-style: italic;
-        }
-
-        .education-desc {
-            font-size: 1rem;
-            line-height: 1.8;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .content-wrapper {
-                grid-template-columns: 1fr;
-            }
-
-            .sidebar {
-                position: static;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .page-title {
-                font-size: 2.5rem;
-            }
-
-            .timeline {
-                padding-left: 2rem;
-            }
-
-            .timeline-item::before {
-                left: -2.4rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .page-header {
-                padding: 8rem 0 4rem;
-            }
-
-            .page-title {
-                font-size: 2rem;
-            }
-
-            .content-wrapper {
-                padding: 2rem 1rem;
-            }
-
-            .timeline {
-                padding-left: 1.5rem;
-            }
-
-            .timeline-item::before {
-                left: -2rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experience - Jaganath M</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+:root{
+  --accent:#4f46e5;--accent2:#7c3aed;--accent-light:#ede9fe;--accent-mid:#c4b5fd;
+  --bg:#f8fafc;--bg2:#f1f5f9;--bg3:#e9f0fa;--white:#fff;
+  --border:#e2e8f0;--border2:#cbd5e1;
+  --text:#0f172a;--text2:#334155;--text3:#64748b;--text4:#94a3b8;
+  --shadow:0 1px 3px rgba(0,0,0,0.08);--shadow-md:0 4px 12px rgba(0,0,0,0.08);--shadow-lg:0 10px 30px rgba(0,0,0,0.1);
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:1rem 0;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:box-shadow .3s;}
+nav.scrolled{box-shadow:var(--shadow-md);}
+.nav-container{max-width:1280px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;}
+.logo{font-size:1.35rem;font-weight:700;color:var(--accent);letter-spacing:-.02em;}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
+.nav-links a{color:var(--text3);text-decoration:none;font-weight:500;font-size:.88rem;position:relative;transition:color .25s;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:2px;background:var(--accent);border-radius:2px;transition:width .25s;}
+.nav-links a:hover,.nav-links a.active{color:var(--accent);}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+.menu-toggle{display:none;background:none;border:none;color:var(--text2);font-size:1.3rem;cursor:pointer;}
+.page-hero{padding:7rem 2rem 3rem;background:linear-gradient(160deg,var(--white) 0%,var(--bg2) 55%,var(--bg3) 100%);border-bottom:1px solid var(--border);text-align:center;}
+.page-label{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem 1rem;background:var(--accent-light);border:1px solid var(--accent-mid);border-radius:50px;color:#5b21b6;font-size:.75rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;margin-bottom:1.1rem;}
+.page-label::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);animation:dot 1.8s ease-in-out infinite;}
+@keyframes dot{0%,100%{opacity:1}50%{opacity:.25}}
+.page-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);color:var(--text);margin-bottom:.8rem;}
+.page-subtitle{font-size:.97rem;line-height:1.8;color:var(--text3);max-width:540px;margin:0 auto;}
+.main{max-width:1100px;margin:0 auto;padding:3.5rem 2rem 5rem;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+.section-heading{display:flex;align-items:center;gap:1rem;margin-bottom:1.75rem;}
+.section-heading h2{font-size:1.15rem;font-weight:700;color:var(--text);white-space:nowrap;}
+.section-heading .line{flex:1;height:1px;background:var(--border);}
+/* SKILLS */
+.skill-list{display:flex;flex-direction:column;gap:1.1rem;margin-bottom:2.5rem;}
+.skill-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;}
+.skill-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;}
+.skill-name{font-size:.85rem;font-weight:600;color:var(--text2);}
+.skill-pct{font-size:.78rem;font-weight:700;color:var(--accent);}
+.skill-bar{height:5px;background:var(--bg2);border-radius:50px;overflow:hidden;}
+.skill-fill{height:100%;border-radius:50px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width 1s ease;}
+/* LANGUAGES */
+.lang-list{display:flex;flex-direction:column;gap:.75rem;}
+.lang-item{display:flex;align-items:center;justify-content:space-between;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem;}
+.lang-name{font-size:.85rem;font-weight:600;color:var(--text2);}
+.lang-badge{font-size:.72rem;font-weight:600;padding:.2rem .65rem;border-radius:50px;background:var(--accent-light);border:1px solid var(--accent-mid);color:#5b21b6;}
+/* TIMELINE */
+.timeline{position:relative;padding-left:1.5rem;}
+.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:2px;background:var(--border);border-radius:2px;}
+.timeline-item{position:relative;margin-bottom:1.75rem;}
+.timeline-item::before{content:'';position:absolute;left:-1.88rem;top:8px;width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--white);box-shadow:0 0 0 2px var(--accent-mid);}
+.timeline-item.current::before{background:var(--accent);animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 2px var(--accent-mid)}50%{box-shadow:0 0 0 5px rgba(79,70,229,0.15)}}
+.tl-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.25rem;transition:border-color .25s,box-shadow .25s;}
+.tl-card:hover{border-color:var(--accent-mid);box-shadow:var(--shadow-md);}
+.tl-header{display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem;margin-bottom:.5rem;}
+.tl-title{font-size:.92rem;font-weight:700;color:var(--text);}
+.tl-badge{font-size:.68rem;font-weight:600;padding:.2rem .65rem;border-radius:50px;white-space:nowrap;flex-shrink:0;}
+.badge-current{background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;}
+.badge-past{background:var(--bg2);border:1px solid var(--border);color:var(--text4);}
+.tl-org{font-size:.8rem;font-weight:600;color:var(--accent);margin-bottom:.3rem;}
+.tl-period{font-size:.75rem;color:var(--text4);margin-bottom:.6rem;}
+.tl-desc{font-size:.82rem;color:var(--text3);line-height:1.65;}
+/* EDUCATION */
+.edu-list{display:flex;flex-direction:column;gap:1.1rem;}
+.edu-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.25rem;display:flex;gap:1rem;align-items:flex-start;transition:border-color .25s,box-shadow .25s;}
+.edu-card:hover{border-color:var(--accent-mid);box-shadow:var(--shadow-md);}
+.edu-icon{width:40px;height:40px;border-radius:10px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.edu-icon i{font-size:.95rem;color:var(--accent);}
+.edu-degree{font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:.2rem;}
+.edu-inst{font-size:.8rem;font-weight:600;color:var(--accent);margin-bottom:.2rem;}
+.edu-period{font-size:.75rem;color:var(--text4);margin-bottom:.4rem;}
+.edu-desc{font-size:.8rem;color:var(--text3);line-height:1.6;}
+footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--text4);font-size:.8rem;background:var(--white);}
+@media(max-width:900px){.two-col{grid-template-columns:1fr;}}
+@media(max-width:768px){
+  .nav-links{position:fixed;top:0;right:-100%;height:100vh;width:min(70%,260px);background:var(--white);flex-direction:column;justify-content:center;padding:2rem;gap:1.75rem;transition:right .3s;border-left:1px solid var(--border);z-index:999;}
+  .nav-links.active{right:0;}.menu-toggle{display:block;}
+}
+@media(max-width:480px){.main{padding:2.5rem 1rem 4rem;}}
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo">Jaganath M</div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about_me.html">About</a></li>
-                <li><a href="research.html">Research</a></li>
-                <li><a href="exp.html" class="active">Experience</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+<nav id="navbar">
+  <div class="nav-container">
+    <div class="logo">Jaganath M</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about_me.html">About</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="exp.html" class="active">Experience</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
 
-    <!-- Page Header -->
-    <div class="page-header">
-        <div class="page-header-content">
-            <h1 class="page-title">Professional Journey</h1>
+<section class="page-hero">
+  <div class="page-label">Career &amp; Education</div>
+  <h1 class="page-title">Professional Journey</h1>
+  <p class="page-subtitle">A path built through academic excellence, research, and a passion for teaching and innovation.</p>
+</section>
+
+<div class="main">
+  <div class="two-col">
+
+    <!-- Left: Skills + Work -->
+    <div>
+      <div class="section-heading"><h2>Skills</h2><div class="line"></div></div>
+      <div class="skill-list">
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">LAMP &amp; MERN Stack</span><span class="skill-pct">90%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
         </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">C, C++, Java</span><span class="skill-pct">80%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Adobe Illustrator</span><span class="skill-pct">75%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Media &amp; Content</span><span class="skill-pct">50%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:50%"></div></div>
+        </div>
+      </div>
+
+      <div class="section-heading"><h2>Languages</h2><div class="line"></div></div>
+      <div class="lang-list">
+        <div class="lang-item"><span class="lang-name"><i class="fas fa-language" style="color:var(--accent);margin-right:.5rem"></i>English</span><span class="lang-badge">Proficient</span></div>
+        <div class="lang-item"><span class="lang-name"><i class="fas fa-language" style="color:var(--accent);margin-right:.5rem"></i>Tamil</span><span class="lang-badge">Native</span></div>
+      </div>
     </div>
 
-    <!-- Main Content -->
-    <div class="content-wrapper">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="profile-card">
-                <h2 class="profile-name">Jaganath M</h2>
-                <div class="profile-title">
-                    <i class="fas fa-briefcase"></i> Assistant Professor
-                </div>
-                
-                <div class="divider"></div>
-                
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-location-dot"></i>
-                        <span>Karur, Tamilnadu</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>jagan_xxx@gmail.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <span>+91 - 97905XXXXX</span>
-                    </div>
-                </div>
+    <!-- Right: Work Experience -->
+    <div>
+      <div class="section-heading"><h2>Work Experience</h2><div class="line"></div></div>
+      <div class="timeline">
 
-                <div class="divider"></div>
-
-                <h3 class="section-title-sidebar">
-                    <i class="fas fa-code"></i> Skills
-                </h3>
-                <div class="skills-list">
-                    <div class="skill-item">
-                        <div class="skill-name">LAMP & MERN Stack</div>
-                        <div class="skill-bar">
-                            <div class="skill-fill" style="width: 90%"></div>
-                            <div class="skill-percentage">90%</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">C, C++, Java</div>
-                        <div class="skill-bar">
-                            <div class="skill-fill" style="width: 80%"></div>
-                            <div class="skill-percentage">80%</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">Illustrator</div>
-                        <div class="skill-bar">
-                            <div class="skill-fill" style="width: 75%"></div>
-                            <div class="skill-percentage">75%</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">Media</div>
-                        <div class="skill-bar">
-                            <div class="skill-fill" style="width: 50%"></div>
-                            <div class="skill-percentage">50%</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="divider"></div>
-
-                <h3 class="section-title-sidebar">
-                    <i class="fas fa-globe"></i> Languages
-                </h3>
-                <div class="languages-list">
-                    <div class="language-item">
-                        <span class="language-name">English</span>
-                        <div class="language-dots">
-                            <span class="dot filled"></span>
-                            <span class="dot filled"></span>
-                            <span class="dot filled"></span>
-                            <span class="dot filled"></span>
-                            <span class="dot filled"></span>
-                        </div>
-                    </div>
-                    <div class="language-item">
-                        <span class="language-name">Tamil</span>
-                        <div class="language-dots">
-                            <span class="dot filled"></span>
-                            <span class="dot filled"></span>
-                            <span class="dot filled"></span>
-                            <span class="dot filled"></span>
-                            <span class="dot filled"></span>
-                        </div>
-                    </div>
-                </div>
+        <div class="timeline-item current">
+          <div class="tl-card">
+            <div class="tl-header">
+              <div class="tl-title">Assistant Professor</div>
+              <span class="tl-badge badge-current">Current</span>
             </div>
-        </aside>
+            <div class="tl-org">AI&DS, M. Kumarasamy College of Engineering</div>
+            <div class="tl-period"><i class="fas fa-calendar-alt" style="margin-right:.35rem;font-size:.7rem"></i>Oct 2021 – Present</div>
+            <div class="tl-desc">Teaching core engineering subjects, mentoring students, guiding research projects, and contributing to academic and professional development.</div>
+          </div>
+        </div>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Work Experience -->
-            <section class="section">
-                <h2 class="section-title-main">
-                    <i class="fas fa-briefcase"></i>
-                    Work Experience
-                </h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <span class="timeline-badge">Current</span>
-                        <h3 class="timeline-job">Assistant Professor</h3>
-                        <div class="timeline-org">AI&DS, M. Kumarasamy College of Engineering</div>
-                        <div class="timeline-dates">Oct 2021 - Present</div>
-                        <p class="timeline-desc">
-                            Currently working as an Assistant Professor, teaching core engineering subjects, mentoring students, 
-                            guiding research projects, and contributing to academic and professional development.
-                        </p>
-                    </div>
+        <div class="timeline-item">
+          <div class="tl-card">
+            <div class="tl-header">
+              <div class="tl-title">Project Associate</div>
+              <span class="tl-badge badge-past">Past</span>
+            </div>
+            <div class="tl-org">SRM Institute of Science &amp; Technology</div>
+            <div class="tl-period"><i class="fas fa-calendar-alt" style="margin-right:.35rem;font-size:.7rem"></i>May 2019 – Oct 2021</div>
+            <div class="tl-desc">Contributed to software development initiatives and guided students in mastering C, C++, Java, Python, and Data Structures.</div>
+          </div>
+        </div>
 
-                    <div class="timeline-item">
-                        <h3 class="timeline-job">Project Associate</h3>
-                        <div class="timeline-org">SRM IST</div>
-                        <div class="timeline-dates">May 2019 - Oct 2021</div>
-                        <p class="timeline-desc">
-                            Contributed to software development initiatives and guided students in mastering programming languages 
-                            such as C, C++, Java, Python, and Data Structures, fostering technical and problem-solving skills.
-                        </p>
-                    </div>
+        <div class="timeline-item">
+          <div class="tl-card">
+            <div class="tl-header">
+              <div class="tl-title">Project Associate</div>
+              <span class="tl-badge badge-past">Past</span>
+            </div>
+            <div class="tl-org">IIT Madras</div>
+            <div class="tl-period"><i class="fas fa-calendar-alt" style="margin-right:.35rem;font-size:.7rem"></i>Feb 2013 – Jul 2016</div>
+            <div class="tl-desc">Participated in cutting-edge R&D projects, collaborated with academic and industry experts, and assisted in delivering innovative solutions across various domains.</div>
+          </div>
+        </div>
 
-                    <div class="timeline-item">
-                        <h3 class="timeline-job">Project Associate</h3>
-                        <div class="timeline-org">IIT Madras</div>
-                        <div class="timeline-dates">Feb 2013 - July 2016</div>
-                        <p class="timeline-desc">
-                            Participated in cutting-edge research and development projects, collaborated with academic and 
-                            industry experts, mentored students, and assisted in delivering innovative solutions across various domains.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Education -->
-            <section class="section">
-                <h2 class="section-title-main">
-                    <i class="fas fa-graduation-cap"></i>
-                    Education
-                </h2>
-                <div class="education-grid">
-                    <div class="education-card">
-                        <h3 class="education-degree">PhD</h3>
-                        <div class="education-school">Anna University</div>
-                        <div class="education-dates">Since 2022</div>
-                        <p class="education-desc">
-                            Pursuing PhD specializing in wireless sensor networks, focusing on innovative solutions for network 
-                            protocols, communication efficiency, and challenges in underwater and terrestrial sensor network environments.
-                        </p>
-                    </div>
-
-                    <div class="education-card">
-                        <h3 class="education-degree">Master Degree (PG)</h3>
-                        <div class="education-school">M. Kumarasamy College of Engineering</div>
-                        <div class="education-dates">2017 - 2019</div>
-                        <p class="education-desc">
-                            Completed postgraduate studies with a focus on advanced engineering concepts and research.
-                        </p>
-                    </div>
-
-                    <div class="education-card">
-                        <h3 class="education-degree">Bachelor Degree (UG)</h3>
-                        <div class="education-school">Kurinji College Of Engineering</div>
-                        <div class="education-dates">2007 - 2011</div>
-                        <p class="education-desc">
-                            Graduated with a Bachelor's degree in Engineering.
-                        </p>
-                    </div>
-                </div>
-            </section>
-        </main>
+      </div>
     </div>
+  </div>
 
-    <script>
-        // Animate skill bars on page load
-        window.addEventListener('load', () => {
-            const skillFills = document.querySelectorAll('.skill-fill');
-            skillFills.forEach(fill => {
-                const width = fill.style.width;
-                fill.style.width = '0';
-                setTimeout(() => {
-                    fill.style.width = width;
-                }, 100);
-            });
-        });
+  <!-- Education full-width -->
+  <div style="margin-top:3rem;">
+    <div class="section-heading"><h2>Education</h2><div class="line"></div></div>
+    <div class="edu-list">
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
+      <div class="edu-card">
+        <div class="edu-icon"><i class="fas fa-flask"></i></div>
+        <div>
+          <div class="edu-degree">PhD — Wireless Sensor Networks</div>
+          <div class="edu-inst">Anna University</div>
+          <div class="edu-period">Since 2022 &nbsp;·&nbsp; In Progress</div>
+          <div class="edu-desc">Specialising in wireless sensor networks, focusing on innovative solutions for network protocols, communication efficiency, and challenges in underwater and terrestrial sensor network environments.</div>
+        </div>
+      </div>
+
+      <div class="edu-card">
+        <div class="edu-icon"><i class="fas fa-user-graduate"></i></div>
+        <div>
+          <div class="edu-degree">Master of Engineering (PG)</div>
+          <div class="edu-inst">M. Kumarasamy College of Engineering</div>
+          <div class="edu-period">2017 – 2019</div>
+          <div class="edu-desc">Completed postgraduate studies with a focus on advanced engineering concepts and research methodologies.</div>
+        </div>
+      </div>
+
+      <div class="edu-card">
+        <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+        <div>
+          <div class="edu-degree">Bachelor of Engineering (UG)</div>
+          <div class="edu-inst">Kurinji College of Engineering</div>
+          <div class="edu-period">2007 – 2011</div>
+          <div class="edu-desc">Graduated with a Bachelor's degree in Engineering, building a strong foundation in core engineering principles.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer>© 2025 M. Jaganath — All rights reserved.</footer>
+<script>
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>50),{passive:true});
+const menuToggle=document.getElementById('menuToggle'),navLinks=document.getElementById('navLinks');
+menuToggle.addEventListener('click',()=>{const o=navLinks.classList.toggle('active');menuToggle.querySelector('i').className=o?'fas fa-times':'fas fa-bars';});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('active');menuToggle.querySelector('i').className='fas fa-bars';}));
+</script>
 </body>
 </html>
