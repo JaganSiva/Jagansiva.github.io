@@ -73,7 +73,13 @@ h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4vw,3.8rem);line-
 @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-7px)}}
 .scroll-indicator span{font-size:.7rem;color:var(--text4);text-transform:uppercase;letter-spacing:.12em;}
 .scroll-indicator i{color:var(--accent);font-size:1rem;}
-footer{text-align:center;padding:2rem 1rem;border-top:1px solid var(--border);color:var(--text4);font-size:.8rem;background:var(--white);}
+/* FOOTER */
+footer{text-align:center;padding:2.5rem 1rem;border-top:1px solid var(--border);color:var(--text4);font-size:.8rem;background:var(--white);}
+.footer-content{display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap;}
+.visitor-counter{display:flex;align-items:center;gap:.5rem;padding:.5rem 1rem;background:var(--accent-light);border-radius:50px;font-size:.8rem;font-weight:500;color:var(--text2);}
+.visitor-counter i{color:var(--accent);}
+.visitor-count{font-weight:700;color:var(--accent);min-width:40px;}
+.footer-text{flex:1;min-width:200px;}
 /* RESPONSIVE */
 @media(max-width:900px){
   .hero-container{grid-template-columns:1fr;gap:2.5rem;padding-top:6rem;text-align:center;}
@@ -82,16 +88,20 @@ footer{text-align:center;padding:2rem 1rem;border-top:1px solid var(--border);co
   .hero-desc{max-width:100%;margin-left:auto;margin-right:auto;}
   .image-container{max-width:300px;margin:0 auto;}
   .card-1{right:0}.card-2{left:0}
+  .footer-content{flex-direction:column;gap:1rem;}
 }
 @media(max-width:768px){
   .nav-links{position:fixed;top:0;right:-100%;height:100vh;width:min(70%,260px);background:var(--white);flex-direction:column;justify-content:center;padding:2rem;gap:1.75rem;transition:right .3s;border-left:1px solid var(--border);z-index:999;}
   .nav-links.active{right:0;}
   .menu-toggle{display:block;}
   .floating-card{display:none;}
+  .visitor-counter{font-size:.75rem;padding:.4rem .8rem;}
 }
 @media(max-width:480px){
   .hero-btns{flex-direction:column;align-items:center;}
   .btn{width:100%;max-width:280px;justify-content:center;}
+  .visitor-counter{font-size:.7rem;padding:.35rem .7rem;}
+  .footer-content{gap:.75rem;}
 }
 </style>
 </head>
@@ -145,14 +155,85 @@ footer{text-align:center;padding:2rem 1rem;border-top:1px solid var(--border);co
   <div class="scroll-indicator"><span>Scroll</span><i class="fas fa-chevron-down"></i></div>
 </section>
 
-<footer>© 2025 M. Jaganath — All rights reserved.</footer>
+<footer>
+  <div class="footer-content">
+    <div class="footer-text">© 2026 M. Jaganath — All rights reserved.</div>
+    <div class="visitor-counter">
+      <i class="fas fa-eye"></i>
+      <span>Visitors:</span>
+      <span class="visitor-count" id="visitorCount">0</span>
+    </div>
+  </div>
+</footer>
 
 <script>
+// Navbar scroll effect
 const navbar=document.getElementById('navbar');
 window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>50),{passive:true});
+
+// Mobile menu toggle
 const menuToggle=document.getElementById('menuToggle'),navLinks=document.getElementById('navLinks');
 menuToggle.addEventListener('click',()=>{const o=navLinks.classList.toggle('active');menuToggle.querySelector('i').className=o?'fas fa-times':'fas fa-bars';});
 navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('active');menuToggle.querySelector('i').className='fas fa-bars';}));
+
+// Visitor Counter - localStorage based
+function initVisitorCounter() {
+  const counterKey = 'jaganath_portfolio_visitors';
+  const lastVisitKey = 'jaganath_portfolio_last_visit';
+  const counterElement = document.getElementById('visitorCount');
+
+  let visitorCount = localStorage.getItem(counterKey) || 0;
+  visitorCount = parseInt(visitorCount);
+
+  const lastVisit = localStorage.getItem(lastVisitKey);
+  const today = new Date().toDateString();
+
+  // Increment counter if it's a new day visit
+  if (lastVisit !== today) {
+    visitorCount++;
+    localStorage.setItem(counterKey, visitorCount);
+    localStorage.setItem(lastVisitKey, today);
+  }
+
+  // Animate counter
+  counterElement.textContent = visitorCount;
+  counterElement.style.animation = 'none';
+  setTimeout(() => {
+    counterElement.style.animation = 'pulse 0.6s ease-out';
+  }, 10);
+}
+
+// Initialize counter on page load
+window.addEventListener('load', initVisitorCounter);
+
+// Add CSS animation for counter
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes pulse {
+    0% { transform: scale(1.2); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+`;
+document.head.appendChild(style);
+
+// UPGRADE NOTES FOR PRODUCTION:
+// Current implementation uses localStorage (client-side, per-browser tracking)
+// For production with global visitor tracking, upgrade to:
+//
+// Option 1: Firebase Realtime Database (free tier)
+// - Initialize Firebase in your page
+// - Store visits in a global counter
+// - Provides real-time global visitor count
+//
+// Option 2: Supabase (PostgreSQL backend)
+// - Create a 'visitors' table with timestamp
+// - Log each visit with date/IP
+// - Query for total or daily counts
+//
+// Option 3: Simple PHP/Node backend
+// - Create API endpoint to increment counter
+// - Store in database
+// - Call endpoint on page load
 </script>
 </body>
 </html>
